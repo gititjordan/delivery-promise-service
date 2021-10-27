@@ -1,0 +1,57 @@
+@startuml
+ !pragma layout smetana
+class GetPromiseHistoryByOrderIdActivity {
+
+}
+class PromiseDao {
+
+}
+
+
+class OrderDao {
+
+}
+class ReadOnlyDao {
+}
+
+class PromiseHistoryClient {
+
+}
+
+class OrderManipulationAuthorityClient {
+
+}
+
+class DeliveryPromiseServiceClient {
+
+}
+class App {
+
+}
+
+class Order {
+
+}
+class OrderItem {
+}
+
+class Promise{
+}
+
+class PromiseHistory {
+
+}
+
+PromiseHistoryClient  o-- GetPromiseHistoryByOrderIdActivity
+GetPromiseHistoryByOrderIdActivity --> PromiseDao
+GetPromiseHistoryByOrderIdActivity --> OrderDao
+PromiseDao --> DeliveryPromiseServiceClient
+PromiseDao --> OrderManipulationAuthorityClient
+OrderDao --> OrderManipulationAuthorityClient
+PromiseHistory --> Order
+PromiseHistory --> Promise
+Order --> OrderItem
+OrderDao ..|> ReadOnlyDao
+PromiseDao ..|> ReadOnlyDao
+
+@enduml

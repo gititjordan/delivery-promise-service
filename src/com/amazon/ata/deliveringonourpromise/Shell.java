@@ -37,7 +37,7 @@ public class Shell {
     private ATAUserHandler inputHandler;
 
     // FIXME: Added to cause a problem with Spotbug
-    private String unusedPrivateString;
+
 
     /**
      * Constructs a Shell instance that will use the given service client.
@@ -56,19 +56,15 @@ public class Shell {
      *
      * @param args command line args (ignored).
      * */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Shell shell = new Shell(App.getPromiseHistoryClient(), new ATAUserHandler());
         shell.processCommandLineArgs(args);
 
-        try
-        {
-            do
-            {
+        try {
+            do {
                 System.out.println(shell.handleUserRequest());
             } while (shell.userHasAnotherRequest());
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("Error encountered. Exiting.");
         }
 
