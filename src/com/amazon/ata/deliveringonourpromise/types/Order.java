@@ -71,7 +71,7 @@ public class Order {
      * @return a list containing all of the order items in this order
      */
     public List<OrderItem> getCustomerOrderItemList() {
-        return customerOrderItemList;
+        return  customerOrderItemList;
     }
 
     public String getShipOption() {

@@ -41,7 +41,7 @@ class Promise{
 class PromiseHistory {
 
 }
-
+'Relationships
 PromiseHistoryClient  o-- GetPromiseHistoryByOrderIdActivity
 GetPromiseHistoryByOrderIdActivity --> PromiseDao
 GetPromiseHistoryByOrderIdActivity --> OrderDao

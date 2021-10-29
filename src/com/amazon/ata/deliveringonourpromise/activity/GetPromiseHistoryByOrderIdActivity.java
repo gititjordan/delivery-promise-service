@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Activity class, handling the GetPromiseHistoryByOrderId API.
  */
-public class GetPromiseHistoryByOrderIdActivity {
+    public class GetPromiseHistoryByOrderIdActivity {
     private ReadOnlyDao<String, Order> orderDao;
     private ReadOnlyDao<String, List<Promise>> promiseDao;
 
@@ -35,12 +35,16 @@ public class GetPromiseHistoryByOrderIdActivity {
      * @return PromiseHistory containing the order and promise history for that order
      */
     public PromiseHistory getPromiseHistoryByOrderId(String orderId) {
-        if (null == orderId) {
-            throw new IllegalArgumentException("order ID cannot be null");
-        }
+       if (null == orderId) {
+           throw new IllegalArgumentException("order ID cannot be null");
+       }
 
         Order order = orderDao.get(orderId);
-        //FIXME
+
+        if (order == null) {
+            return new PromiseHistory(order);
+        }
+
         List<OrderItem> customerOrderItems = order.getCustomerOrderItemList();
         OrderItem customerOrderItem = null;
         if (customerOrderItems != null && !customerOrderItems.isEmpty()) {

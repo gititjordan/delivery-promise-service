@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * DAO implementation for orders.
  */
-public class OrderDao implements ReadOnlyDao<String, Order> {
+ public class OrderDao implements ReadOnlyDao<String, Order> {
 
     private OrderManipulationAuthorityClient omaClient;
 
@@ -45,11 +45,11 @@ public class OrderDao implements ReadOnlyDao<String, Order> {
             return null;
         }
 
-        List<OrderItem> orderItems = new ArrayList<>();
-        for (OrderResultItem orderResultItem : omaOrder.getCustomerOrderItemList()) {
-            orderItems.add(convertToOrderItem(orderResultItem));
-        }
+            List<OrderItem> orderItems = new ArrayList<>();
+            for (OrderResultItem orderResultItem : omaOrder.getCustomerOrderItemList()) {
+                orderItems.add(convertToOrderItem(orderResultItem));
 
+        }
         Order.Builder orderBuilder = Order.builder()
                                          .withOrderId(omaOrder.getOrderId())
                                          .withCustomerId(omaOrder.getCustomerId())
