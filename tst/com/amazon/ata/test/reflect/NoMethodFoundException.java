@@ -9,15 +9,16 @@ public class NoMethodFoundException extends MethodQueryException {
 
     /**
      * Creates a new {@code NoMethodFoundException}.
+     *
      * @param methodQuery the {@code MethodQuery} that ran into trouble.
      */
     public NoMethodFoundException(final MethodQuery methodQuery) {
         super(
-            methodQuery,
-            String.format(
-                "No method found in %s matching criteria: %s",
-                methodQuery.getContainingType(),
-                methodQuery.toString())
+                methodQuery,
+                String.format(
+                        "No method found in %s matching criteria: %s",
+                        methodQuery.getContainingType(),
+                        methodQuery.toString())
         );
     }
 }

@@ -20,6 +20,7 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
 
     /**
      * PromiseDao constructor, accepting service clients for DPS and OMA.
+     *
      * @param dpsClient DeliveryPromiseServiceClient for DAO to access DPS
      * @param omaClient OrderManipulationAuthorityClient for DAO to access OMA
      */
@@ -30,6 +31,7 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
 
     /**
      * Returns a list of all Promises associated with the given order item ID.
+     *
      * @param customerOrderItemId the order item ID to fetch promise for
      * @return a List of promises for the given order item ID
      */

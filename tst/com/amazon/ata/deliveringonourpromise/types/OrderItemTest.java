@@ -27,8 +27,8 @@ public class OrderItemTest {
 
         // THEN
         assertTrue(
-            result,
-            String.format("Expected %s and %s OrderItems to be equal but they were not", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to be equal but they were not", orderItem1, orderItem2)
         );
     }
 
@@ -43,8 +43,8 @@ public class OrderItemTest {
 
         // THEN
         assertFalse(
-            result,
-            String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
         );
     }
 
@@ -59,8 +59,8 @@ public class OrderItemTest {
 
         // THEN
         assertFalse(
-            result,
-            String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
         );
     }
 
@@ -75,8 +75,8 @@ public class OrderItemTest {
 
         // THEN
         assertFalse(
-            result,
-            String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
         );
     }
 
@@ -90,8 +90,8 @@ public class OrderItemTest {
 
         // THEN
         assertFalse(
-            result,
-            String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
         );
     }
 
@@ -106,8 +106,8 @@ public class OrderItemTest {
 
         // THEN
         assertFalse(
-            result,
-            String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
         );
     }
 
@@ -122,8 +122,8 @@ public class OrderItemTest {
 
         // THEN
         assertFalse(
-            result,
-            String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
         );
     }
 
@@ -138,8 +138,8 @@ public class OrderItemTest {
 
         // THEN
         assertFalse(
-            result,
-            String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
         );
     }
 
@@ -154,8 +154,8 @@ public class OrderItemTest {
 
         // THEN
         assertFalse(
-            result,
-            String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
+                result,
+                String.format("Expected %s and %s OrderItems to not be equal but they were", orderItem1, orderItem2)
         );
     }
 
@@ -167,27 +167,27 @@ public class OrderItemTest {
 
         // THEN
         assertEquals(
-            orderItem1.hashCode(),
-            orderItem2.hashCode(),
-            String.format(
-                "Expected hashCode of %s (%d) and %s (%d) OrderItems to be equal but they were not",
-                orderItem1,
                 orderItem1.hashCode(),
-                orderItem2,
-                orderItem2.hashCode())
+                orderItem2.hashCode(),
+                String.format(
+                        "Expected hashCode of %s (%d) and %s (%d) OrderItems to be equal but they were not",
+                        orderItem1,
+                        orderItem1.hashCode(),
+                        orderItem2,
+                        orderItem2.hashCode())
         );
     }
 
     private OrderItem.Builder getGenericOrderItemBuilder() {
         return OrderItem.builder()
-                   .withCustomerOrderItemId(customerOrderItemId)
-                   .withOrderId(orderId)
-                   .withAsin(asin)
-                   .withConfidence(confidence)
-                   .withIsConfidenceTracked(isConfidenceTracked)
-                   .withMerchantId(merchantId)
-                   .withQuantity(quantity)
-                   .withTitle(title);
+                .withCustomerOrderItemId(customerOrderItemId)
+                .withOrderId(orderId)
+                .withAsin(asin)
+                .withConfidence(confidence)
+                .withIsConfidenceTracked(isConfidenceTracked)
+                .withMerchantId(merchantId)
+                .withQuantity(quantity)
+                .withTitle(title);
     }
 
 

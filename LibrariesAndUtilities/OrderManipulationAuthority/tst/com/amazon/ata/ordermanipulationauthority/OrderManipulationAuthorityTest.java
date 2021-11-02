@@ -351,23 +351,23 @@ public class OrderManipulationAuthorityTest {
 
         // THEN
         Set<String> orderItemIds = order.getCustomerOrderItemList().stream()
-                                       .map(OrderResultItem::getCustomerOrderItemId)
-                                       .collect(Collectors.toSet());
+                .map(OrderResultItem::getCustomerOrderItemId)
+                .collect(Collectors.toSet());
         Set<String> shipmentOrderItemIds = new HashSet<>();
         for (OrderShipment shipment : order.getOrderShipmentList()) {
             shipmentOrderItemIds.addAll(
-                shipment.getCustomerShipmentItems().stream()
-                    .map(OrderShipment.ShipmentItem::getCustomerOrderItemId)
-                    .collect(Collectors.toSet())
+                    shipment.getCustomerShipmentItems().stream()
+                            .map(OrderShipment.ShipmentItem::getCustomerOrderItemId)
+                            .collect(Collectors.toSet())
             );
         }
 
         assertEquals(orderItemIds, shipmentOrderItemIds,
-                     String.format("Expected to find all order item IDs (%s) in shipment items, " +
-                                   "shipment item order item IDs: %s",
-                                   orderItemIds.toString(),
-                                   shipmentOrderItemIds.toString()
-                     )
+                String.format("Expected to find all order item IDs (%s) in shipment items, " +
+                                "shipment item order item IDs: %s",
+                        orderItemIds.toString(),
+                        shipmentOrderItemIds.toString()
+                )
         );
     }
 
@@ -381,21 +381,21 @@ public class OrderManipulationAuthorityTest {
 
         // THEN
         Map<String, Integer> orderItemIdsToQuantities =
-            order.getCustomerOrderItemList().stream()
-                .collect(Collectors.toMap(OrderResultItem::getCustomerOrderItemId, OrderResultItem::getQuantity));
+                order.getCustomerOrderItemList().stream()
+                        .collect(Collectors.toMap(OrderResultItem::getCustomerOrderItemId, OrderResultItem::getQuantity));
 
         for (OrderShipment shipment : order.getOrderShipmentList()) {
             for (OrderShipment.ShipmentItem shipmentItem : shipment.getCustomerShipmentItems()) {
                 int orderItemQuantity = orderItemIdsToQuantities.get(shipmentItem.getCustomerOrderItemId());
                 assertTrue(shipmentItem.getQuantity() <= orderItemQuantity,
-                           String.format("Expected shipment '%s' with shipment item with order item ID '%s' with a " +
-                                         "quantity (%d) less than or equal to order item's quantity (%d)",
-                                         shipment.getShipmentId(),
-                                         shipmentItem.getCustomerOrderItemId(),
-                                         shipmentItem.getQuantity(),
-                                         orderItemIdsToQuantities.get(shipmentItem.getCustomerOrderItemId()
-                                         )
-                           )
+                        String.format("Expected shipment '%s' with shipment item with order item ID '%s' with a " +
+                                        "quantity (%d) less than or equal to order item's quantity (%d)",
+                                shipment.getShipmentId(),
+                                shipmentItem.getCustomerOrderItemId(),
+                                shipmentItem.getQuantity(),
+                                orderItemIdsToQuantities.get(shipmentItem.getCustomerOrderItemId()
+                                )
+                        )
                 );
             }
         }
@@ -427,11 +427,11 @@ public class OrderManipulationAuthorityTest {
 
         // THEN
         assertEquals(orderItemId, orderItem.getCustomerOrderItemId(),
-                     String.format("Expected order item's order item ID to match the order item ID passed to OMA " +
-                                   "('%s'), but returned order item was: %s",
-                                   orderItemId,
-                                   orderItem.toString()
-                     )
+                String.format("Expected order item's order item ID to match the order item ID passed to OMA " +
+                                "('%s'), but returned order item was: %s",
+                        orderItemId,
+                        orderItem.toString()
+                )
         );
     }
 
@@ -447,17 +447,17 @@ public class OrderManipulationAuthorityTest {
 
         // THEN
         Set<String> orderItemIds = order.getCustomerOrderItemList().stream()
-                                       .map(OrderResultItem::getCustomerOrderItemId)
-                                       .collect(Collectors.toSet());
+                .map(OrderResultItem::getCustomerOrderItemId)
+                .collect(Collectors.toSet());
         assertTrue(orderItemIds.contains(orderItem.getCustomerOrderItemId()),
-                   String.format("Expected the order item ID passed to OMA ('%s') to be in the order ('%s') " +
-                                 "corresponding to that order item ID, but order's order item IDs were %s",
-                                 orderItemId,
-                                 order.getOrderId(),
-                                 order.getCustomerOrderItemList().stream()
-                                     .map(OrderResultItem::getCustomerOrderItemId)
-                                     .toString()
-                   )
+                String.format("Expected the order item ID passed to OMA ('%s') to be in the order ('%s') " +
+                                "corresponding to that order item ID, but order's order item IDs were %s",
+                        orderItemId,
+                        order.getOrderId(),
+                        order.getCustomerOrderItemList().stream()
+                                .map(OrderResultItem::getCustomerOrderItemId)
+                                .toString()
+                )
         );
     }
 }

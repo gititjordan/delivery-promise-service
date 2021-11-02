@@ -22,7 +22,8 @@ public final class OrderResultItem {
     private boolean isConfidenceTracked;
     private int confidence;
 
-    private OrderResultItem() {}
+    private OrderResultItem() {
+    }
 
     public String getCustomerOrderItemId() {
         return customerOrderItemId;
@@ -74,6 +75,7 @@ public final class OrderResultItem {
 
     /**
      * Returns a builder, suitable for constructing an OrderResultItem.
+     *
      * @return new Builder, ready to build an OrderResultItem
      */
     public static Builder builder() {
@@ -160,6 +162,7 @@ public final class OrderResultItem {
 
         /**
          * Builds a new OrderResultItem.
+         *
          * @return the newly minted OrderResultItem
          */
         public OrderResultItem build() {

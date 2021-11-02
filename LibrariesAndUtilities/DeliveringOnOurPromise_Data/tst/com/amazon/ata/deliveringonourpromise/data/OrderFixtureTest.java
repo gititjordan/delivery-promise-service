@@ -37,8 +37,8 @@ public class OrderFixtureTest {
         orderItems.add(OrderItemData.builder().withCustomerOrderItemId(orderItemId2).build());
 
         populatedOrderData = OrderData.builder()
-                                 .withOrderId(orderId)
-                                 .withCustomerOrderItemList(orderItems).build();
+                .withOrderId(orderId)
+                .withCustomerOrderItemList(orderItems).build();
 
         nullOrderDataFixture = new OrderFixture(nullOrderData, "null order");
         populatedOrderDataFixture = new OrderFixture(populatedOrderData, populatedDescription);
@@ -86,6 +86,6 @@ public class OrderFixtureTest {
 
         // THEN
         assertEquals(new HashSet<>(Arrays.asList(orderItemId1, orderItemId2)),
-                     new HashSet<>(results));
+                new HashSet<>(results));
     }
 }

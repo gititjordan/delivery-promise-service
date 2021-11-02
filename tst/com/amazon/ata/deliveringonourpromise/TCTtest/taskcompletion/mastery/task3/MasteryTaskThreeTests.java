@@ -56,20 +56,20 @@ public class MasteryTaskThreeTests {
     void masteryTaskThree_orderClass_getCustomerOrderItemList_internalStateIsProtectedByDefensiveCopying() {
         // GIVEN
         OrderItem customerOrderItem = OrderItem.builder()
-            .withCustomerOrderItemId("1")
-            .build();
+                .withCustomerOrderItemId("1")
+                .build();
 
         List<OrderItem> orderItemList = new ArrayList<>();
         orderItemList.add(customerOrderItem);
 
         Order order = Order.builder()
-            .withCustomerOrderItemList(orderItemList)
-            .build();
+                .withCustomerOrderItemList(orderItemList)
+                .build();
 
         String maliciousCustomerOrderItemId = "2";
         OrderItem maliciousCustomerOrderItem = OrderItem.builder()
-            .withCustomerOrderItemId(maliciousCustomerOrderItemId)
-            .build();
+                .withCustomerOrderItemId(maliciousCustomerOrderItemId)
+                .build();
 
         // WHEN
         List<OrderItem> customerOrderItemList = order.getCustomerOrderItemList();
@@ -91,21 +91,21 @@ public class MasteryTaskThreeTests {
 
         // THEN
         assertEquals(
-            order.getCustomerOrderItemList().size(),
-            1,
-            "Expected only original OrderItem to exist in Order, but found: " + order.getCustomerOrderItemList()
+                order.getCustomerOrderItemList().size(),
+                1,
+                "Expected only original OrderItem to exist in Order, but found: " + order.getCustomerOrderItemList()
         );
         String orderItemId = order.getCustomerOrderItemList().get(0).getCustomerOrderItemId();
         assertNotEquals(orderItemId, maliciousCustomerOrderItemId,
-            "Expected Order class to not allow item to be maliciously inserted but it was!");
+                "Expected Order class to not allow item to be maliciously inserted but it was!");
     }
 
     @Test
     void masteryTaskThree_orderClass_withCustomerOrderItemList_internalStateIsProtectedByDefensiveCopying() {
         // GIVEN
         OrderItem customerOrderItem = OrderItem.builder()
-                                          .withCustomerOrderItemId("1")
-                                          .build();
+                .withCustomerOrderItemId("1")
+                .build();
 
         List<OrderItem> orderItemList = new ArrayList<>();
         orderItemList.add(customerOrderItem);
@@ -113,12 +113,12 @@ public class MasteryTaskThreeTests {
         // Don't finish building the Order just yet...pass in the list,
         // then modify it before final build().
         Order.Builder orderBuilder = Order.builder()
-                          .withCustomerOrderItemList(orderItemList);
+                .withCustomerOrderItemList(orderItemList);
 
         String maliciousCustomerOrderItemId = "2";
         OrderItem maliciousCustomerOrderItem = OrderItem.builder()
-                                                   .withCustomerOrderItemId(maliciousCustomerOrderItemId)
-                                                   .build();
+                .withCustomerOrderItemId(maliciousCustomerOrderItemId)
+                .build();
 
         // WHEN - attempt to update the list that was already passed into the Order should
         // not modify the Order's list, even if modified before build()
@@ -128,12 +128,12 @@ public class MasteryTaskThreeTests {
         Order order = orderBuilder.build();
         List<OrderItem> customerOrderItemList = order.getCustomerOrderItemList();
         assertEquals(
-            customerOrderItemList.size(),
-            1,
-            "Expected only original OrderItem to exist in Order, but found: " + customerOrderItemList
+                customerOrderItemList.size(),
+                1,
+                "Expected only original OrderItem to exist in Order, but found: " + customerOrderItemList
         );
         String orderItemId = customerOrderItemList.get(0).getCustomerOrderItemId();
         assertNotEquals(orderItemId, maliciousCustomerOrderItemId,
-                        "Expected Order class to not allow item to be maliciously inserted but it was!");
+                "Expected Order class to not allow item to be maliciously inserted but it was!");
     }
 }

@@ -9,22 +9,24 @@ import java.util.Set;
  */
 public class MultipleConstructorsFoundException extends ConstructorQueryException {
     private static final long serialVersionUID = 6090518968834680354L;
+
     /**
      * Creates a new {@code MultipleConstructorsFoundException}.
+     *
      * @param constructorQuery the {@code ConstructorQuery} that ran into trouble.
-     * @param constructors the multiple constructors matching the constructor query
+     * @param constructors     the multiple constructors matching the constructor query
      */
     public MultipleConstructorsFoundException(
-        ConstructorQuery constructorQuery,
-        Set<Constructor<?>> constructors) {
+            ConstructorQuery constructorQuery,
+            Set<Constructor<?>> constructors) {
 
         super(
-            constructorQuery,
-            String.format(
-                "Multiple constructors in type %s (%s) matched criteria: %s",
-                constructorQuery.getContainingClass(),
-                constructors,
-                constructorQuery)
+                constructorQuery,
+                String.format(
+                        "Multiple constructors in type %s (%s) matched criteria: %s",
+                        constructorQuery.getContainingClass(),
+                        constructors,
+                        constructorQuery)
         );
     }
 }

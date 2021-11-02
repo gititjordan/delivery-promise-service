@@ -47,7 +47,7 @@ import java.util.stream.Collectors;
  *         {@code MAX_ARGUMENTS} arguments. Can repeat arg types
  *         This method can only be called once per query.</li>
  * </ul>
- *
+ * <p>
  * Examples:
  * <ul>
  * <li><pre>
@@ -89,11 +89,13 @@ import java.util.stream.Collectors;
  * @see com.amazon.ata.test.assertions.IntrospectionAssertions for assertions on
  * methods after the method of interest is returned.
  * @see MethodInvoker for means to invoke methods with reflection.
- *
+ * <p>
  * For further improvements, see https://sim.amazon.com/issues/ATAENG-1614
  */
 public final class MethodQuery {
-    /** maximum allowed number of argument types to specify with {@code withExactArgTypes}. */
+    /**
+     * maximum allowed number of argument types to specify with {@code withExactArgTypes}.
+     */
     public static final int MAX_ARGUMENTS = 8;
 
     private final Class<?> clazz;
@@ -167,7 +169,7 @@ public final class MethodQuery {
         }
 
         return new MethodQuery(
-            this.clazz, returnTypeToUse, this.exactMethodName, this.methodNameContainingSubstrings, this.exactArgTypes
+                this.clazz, returnTypeToUse, this.exactMethodName, this.methodNameContainingSubstrings, this.exactArgTypes
         );
     }
 
@@ -186,7 +188,7 @@ public final class MethodQuery {
         ensureReturnTypeNotAlreadySet();
 
         return new MethodQuery(
-            this.clazz, Void.TYPE, this.exactMethodName, this.methodNameContainingSubstrings, this.exactArgTypes
+                this.clazz, Void.TYPE, this.exactMethodName, this.methodNameContainingSubstrings, this.exactArgTypes
         );
     }
 
@@ -211,7 +213,7 @@ public final class MethodQuery {
         }
 
         return new MethodQuery(
-            this.clazz, this.returnType, methodName, this.methodNameContainingSubstrings, this.exactArgTypes
+                this.clazz, this.returnType, methodName, this.methodNameContainingSubstrings, this.exactArgTypes
         );
     }
 
@@ -242,7 +244,7 @@ public final class MethodQuery {
         newMethodNameContainingSubstrings.add(methodNameSubstring);
 
         return new MethodQuery(
-            this.clazz, this.returnType, this.exactMethodName, newMethodNameContainingSubstrings, this.exactArgTypes
+                this.clazz, this.returnType, this.exactMethodName, newMethodNameContainingSubstrings, this.exactArgTypes
         );
     }
 
@@ -273,7 +275,7 @@ public final class MethodQuery {
      * </p>
      *
      * @param argTypes {@code Collection<Class<?>>} of argument types. List to allow repeated
-     *                                       arg types
+     *                 arg types
      * @return an updated {@code MethodQuery} with new filter applied
      */
     public MethodQuery withExactArgTypes(final Collection<Class<?>> argTypes) {
@@ -283,10 +285,10 @@ public final class MethodQuery {
         }
         if (argTypes.size() > MAX_ARGUMENTS) {
             throw new IllegalArgumentException(
-                String.format(
-                    "withExactArgTypes will not accept more than %d arguments: %s",
-                    MAX_ARGUMENTS,
-                    argTypes.toString())
+                    String.format(
+                            "withExactArgTypes will not accept more than %d arguments: %s",
+                            MAX_ARGUMENTS,
+                            argTypes.toString())
             );
         }
         for (Class<?> argType : argTypes) {
@@ -296,11 +298,11 @@ public final class MethodQuery {
         }
 
         return new MethodQuery(
-            this.clazz,
-            this.returnType,
-            this.exactMethodName,
-            this.methodNameContainingSubstrings,
-            new ArrayList<>(argTypes)
+                this.clazz,
+                this.returnType,
+                this.exactMethodName,
+                this.methodNameContainingSubstrings,
+                new ArrayList<>(argTypes)
         );
     }
 
@@ -358,7 +360,7 @@ public final class MethodQuery {
 
         // for each set of filters, findMethods() and union with methods found so far
         for (Set<Predicate<? super Method>> currFilterSet : getFilterPermutations()) {
-            Predicate<? super Method>[] filterArray = (Predicate []) currFilterSet.toArray(new Predicate[0]);
+            Predicate<? super Method>[] filterArray = (Predicate[]) currFilterSet.toArray(new Predicate[0]);
             matchingMethods.addAll(ReflectionUtils.getMethods(clazz, filterArray));
         }
 
@@ -382,7 +384,7 @@ public final class MethodQuery {
         // iterate through all permutations of arg types, generating a full set of
         // predicates for each one so we can try each one with ReflectionUtils.findMethods()
         for (List<Class<?>> argTypePermutation : Collections2.permutations(exactArgTypes)) {
-            Class<?>[] argTypesArray = (Class []) argTypePermutation.toArray(new Class[0]);
+            Class<?>[] argTypesArray = (Class[]) argTypePermutation.toArray(new Class[0]);
 
             Set<Predicate<? super Method>> filterSet = new HashSet<>(fixedFilters);
             filterSet.add(ReflectionUtils.withParameters(argTypesArray));
@@ -429,9 +431,9 @@ public final class MethodQuery {
 
     private Set<Method> filterOutTestMethods(final Set<Method> methods) {
         return methods.stream()
-            // when running unit tests, JaCoCo seems to inject this method...ignore it
-            .filter(m -> !m.getName().equals("$jacocoInit"))
-            .collect(Collectors.toSet());
+                // when running unit tests, JaCoCo seems to inject this method...ignore it
+                .filter(m -> !m.getName().equals("$jacocoInit"))
+                .collect(Collectors.toSet());
     }
 
     // throw exceptions if attempt is made to overwrite filters -- consider these bugs
@@ -446,7 +448,7 @@ public final class MethodQuery {
         ensureExactMethodNameNotAlreadySet();
         if (!methodNameContainingSubstrings.isEmpty()) {
             throw new IllegalStateException(
-                "Name filter(s) already exist(s): " + methodNameContainingSubstrings.toString()
+                    "Name filter(s) already exist(s): " + methodNameContainingSubstrings.toString()
             );
         }
     }
@@ -471,7 +473,7 @@ public final class MethodQuery {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("{MethodQuery | ")
-            .append("class: ").append(clazz);
+                .append("class: ").append(clazz);
 
         if (null != returnType) {
             sb.append(String.format(", returnType: %s", returnType.toString()));
@@ -481,7 +483,7 @@ public final class MethodQuery {
             sb.append(String.format(", exactMethodName: %s", exactMethodName));
         } else if (null != methodNameContainingSubstrings && !methodNameContainingSubstrings.isEmpty()) {
             sb.append(
-                String.format(", methodNameContainingSubstrings: [%s]", methodNameContainingSubstrings.toString())
+                    String.format(", methodNameContainingSubstrings: [%s]", methodNameContainingSubstrings.toString())
             );
         }
 

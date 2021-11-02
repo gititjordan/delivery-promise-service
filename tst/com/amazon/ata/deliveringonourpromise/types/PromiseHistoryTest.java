@@ -43,7 +43,7 @@ public class PromiseHistoryTest {
 
         // WHEN & THEN
         Assertions.assertThrows(IllegalArgumentException.class, () -> history.addPromise(mockPromise),
-                                "Should not be able to add a promise to a promise history object with a null order.");
+                "Should not be able to add a promise to a promise history object with a null order.");
 
     }
 
@@ -54,7 +54,7 @@ public class PromiseHistoryTest {
 
         // WHEN & THEN
         Assertions.assertThrows(IllegalArgumentException.class, () -> history.addPromise(null),
-                                "Should not be able to add a null promise to a promise history.");
+                "Should not be able to add a null promise to a promise history.");
 
     }
 

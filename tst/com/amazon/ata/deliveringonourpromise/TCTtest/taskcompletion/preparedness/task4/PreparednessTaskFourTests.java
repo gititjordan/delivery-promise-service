@@ -32,18 +32,18 @@ public class PreparednessTaskFourTests {
 
     @DataProvider(name = "requiredClasses")
     public static Object[][] getRequiredClasses() {
-        return new Object[][] {
-            {"GetPromiseHistoryByOrderIdActivity"},
-            {"OrderDao"},
-            {"PromiseDao"},
-            {"PromiseHistoryClient"},
-            {"OrderManipulationAuthorityClient"},
-            {"DeliveryPromiseServiceClient"},
-            {"App"},
-            {"Order"},
-            {"OrderItem"},
-            {"Promise"},
-            {"PromiseHistory"}
+        return new Object[][]{
+                {"GetPromiseHistoryByOrderIdActivity"},
+                {"OrderDao"},
+                {"PromiseDao"},
+                {"PromiseHistoryClient"},
+                {"OrderManipulationAuthorityClient"},
+                {"DeliveryPromiseServiceClient"},
+                {"App"},
+                {"Order"},
+                {"OrderItem"},
+                {"Promise"},
+                {"PromiseHistory"}
         };
     }
 
@@ -62,13 +62,13 @@ public class PreparednessTaskFourTests {
         Pattern p = Pattern.compile("\\b" + interfacePattern + "\\b");
         Matcher m = p.matcher(plantUmlContent);
         assertTrue(m.find(),
-                   String.format("Expected %s to contain the interface: %s", DIAGRAM_FILENAME, interfacePattern)
+                String.format("Expected %s to contain the interface: %s", DIAGRAM_FILENAME, interfacePattern)
         );
     }
 
     @DataProvider(name = "requiredInterfaces")
     public static Object[][] getRequiredInterfaces() {
-        return new Object[][] {{"ReadOnlyDao"}};
+        return new Object[][]{{"ReadOnlyDao"}};
     }
 
 
@@ -87,16 +87,16 @@ public class PreparednessTaskFourTests {
 
     @DataProvider(name = "requiredContainsRelationships")
     public static Object[][] getRequiredContainsRelationships() {
-        return new Object[][] {
-            {"PromiseHistoryClient", "GetPromiseHistoryByOrderIdActivity"},
-            {"GetPromiseHistoryByOrderIdActivity", "PromiseDao"},
-            {"GetPromiseHistoryByOrderIdActivity", "OrderDao"},
-            {"PromiseDao", "DeliveryPromiseServiceClient"},
-            {"PromiseDao", "OrderManipulationAuthorityClient"},
-            {"OrderDao", "OrderManipulationAuthorityClient"},
-            {"PromiseHistory", "Order"},
-            {"PromiseHistory", "Promise"},
-            {"Order", "OrderItem"}
+        return new Object[][]{
+                {"PromiseHistoryClient", "GetPromiseHistoryByOrderIdActivity"},
+                {"GetPromiseHistoryByOrderIdActivity", "PromiseDao"},
+                {"GetPromiseHistoryByOrderIdActivity", "OrderDao"},
+                {"PromiseDao", "DeliveryPromiseServiceClient"},
+                {"PromiseDao", "OrderManipulationAuthorityClient"},
+                {"OrderDao", "OrderManipulationAuthorityClient"},
+                {"PromiseHistory", "Order"},
+                {"PromiseHistory", "Promise"},
+                {"Order", "OrderItem"}
         };
     }
 
@@ -116,9 +116,9 @@ public class PreparednessTaskFourTests {
 
     @DataProvider(name = "requiredImplementsRelationships")
     public Object[][] getRequiredImplementsRelationships() {
-        return new Object[][] {
-            {"OrderDao", "ReadOnlyDao"},
-            {"PromiseDao", "ReadOnlyDao"}
+        return new Object[][]{
+                {"OrderDao", "ReadOnlyDao"},
+                {"PromiseDao", "ReadOnlyDao"}
         };
     }
 

@@ -4,7 +4,7 @@ import java.time.ZonedDateTime;
 
 /**
  * Represents a promise made by the Order Fulfillment Service.
- *
+ * <p>
  * Promise field explanations:
  * * customerOrderId: the customer's order ID
  * * customerOrderItemId: the ID of the item in the customer's order that this Promise is for
@@ -15,11 +15,11 @@ import java.time.ZonedDateTime;
  * * promiseEffectiveDate: when this promise became the promise for this item
  * * planQualityTypeCode:
  * * isActive: true if this Promise is currently in effect and represents current promise to customer for this item;
- *             false otherwise
+ * false otherwise
  * * promiseLatestShipDate: (internally facing) timestamp of latest time the shipment can be shipped and still make
- *                          customer promise
+ * customer promise
  * * fulfillmentSvsSubclassId: Meaningful code for the order fulfillment service identifying the type of order this
- *                             item belongs to
+ * item belongs to
  * * promiseProvidedBy: the promise service that issued the promise (e.g. DPS, OFS...).
  */
 public class OrderPromise {
@@ -88,23 +88,24 @@ public class OrderPromise {
     @Override
     public String toString() {
         return "OrderPromise{" +
-               "customerOrderId='" + customerOrderId + '\'' +
-               ", customerOrderItemId='" + customerOrderItemId + '\'' +
-               ", asin='" + asin + '\'' +
-               ", promiseQuantity=" + promiseQuantity +
-               ", promiseLatestArrivalDate=" + promiseLatestArrivalDate +
-               ", promiseDataSource='" + promiseDataSource + '\'' +
-               ", promiseEffectiveDate=" + promiseEffectiveDate +
-               ", planQualityTypeCode='" + planQualityTypeCode + '\'' +
-               ", isActive=" + isActive +
-               ", promiseLatestShipDate=" + promiseLatestShipDate +
-               ", fulfillmentSvcSubclassId='" + fulfillmentSvcSubclassId + '\'' +
-               ", promiseProvidedBy='" + promiseProvidedBy + '\'' +
-               '}';
+                "customerOrderId='" + customerOrderId + '\'' +
+                ", customerOrderItemId='" + customerOrderItemId + '\'' +
+                ", asin='" + asin + '\'' +
+                ", promiseQuantity=" + promiseQuantity +
+                ", promiseLatestArrivalDate=" + promiseLatestArrivalDate +
+                ", promiseDataSource='" + promiseDataSource + '\'' +
+                ", promiseEffectiveDate=" + promiseEffectiveDate +
+                ", planQualityTypeCode='" + planQualityTypeCode + '\'' +
+                ", isActive=" + isActive +
+                ", promiseLatestShipDate=" + promiseLatestShipDate +
+                ", fulfillmentSvcSubclassId='" + fulfillmentSvcSubclassId + '\'' +
+                ", promiseProvidedBy='" + promiseProvidedBy + '\'' +
+                '}';
     }
 
     /**
      * Returns a builder suitable for constructing an OrderPromise.
+     *
      * @return Builder object ready to build an OrderPromise
      */
     public static Builder builder() {
@@ -195,6 +196,7 @@ public class OrderPromise {
 
         /**
          * constructs a new OrderPromise from the current builder state.
+         *
          * @return OrderPromise, populated with values from the builder's state
          */
         public OrderPromise build() {

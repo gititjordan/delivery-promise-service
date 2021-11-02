@@ -20,9 +20,9 @@ public final class AtaAssertions {
     /**
      * Asserts that the given content contains the substring provided.
      *
-     * @param content The string in which to search for the given substring
+     * @param content        The string in which to search for the given substring
      * @param expectedString The substring to search for in {@code content}
-     * @param message The failure message to display if substring not found.
+     * @param message        The failure message to display if substring not found.
      */
     public static void assertContains(final String content, final String expectedString, final String message) {
         assertTrue(content.contains(expectedString), message);
@@ -45,24 +45,24 @@ public final class AtaAssertions {
                                              final String message) {
         assertTrue(getValueBetweenPatterns(content, startPattern, endPattern).isPresent(), message);
         assertTrue(StringUtils.isNotBlank(getValueBetweenPatterns(content, startPattern, endPattern).get()),
-            message);
+                message);
 
     }
 
     /**
      * Asserts that the given (multiline) content has a match within a single line somewhere in it that corresponds
      * with the given regular expression string.
-     *
+     * <p>
      * If you contain a dot ({@code .}) in your pattern, it will *not* match newline
      * characters, so your pattern must all be found on a single line of {@code content}. If you need to match a pattern
      * across multiple lines, use {@code assertMatchesMultiLine}.
-     *
+     * <p>
      * Also note that {@code ^} will only match the beginning of the entire content string; {@code $} will only match
      * the end of the entire content string;
      *
-     * @param content The string in which to search for the given regex
+     * @param content       The string in which to search for the given regex
      * @param patternToFind The regex to search for within {@code content}.
-     * @param message The failure message to display if pattern not found in {@code content}
+     * @param message       The failure message to display if pattern not found in {@code content}
      */
     public static void assertMatchesSingleLine(final String content, final String patternToFind, final String message) {
         assertTrue(AtaTestHelper.matchesSingleLine(content, patternToFind), message);
@@ -71,16 +71,16 @@ public final class AtaAssertions {
     /**
      * Asserts that the given (multiline) content has a match that may span lines in it that corresponds with the given
      * regular expression string.
-     *
+     * <p>
      * If you contain a dot ({@code .}) in your pattern, it *will* match newline characters, so
      * your pattern might be matching across lines. If you intend to match a pattern that should only exist on a
      * single line, use {@code assertMatchesSingleLine}.
-     *
+     * <p>
      * Also note that {@code ^} will match beginning of *any* line; {@code $} will match end of *any* line.
      *
-     * @param content The string in which to search for the given regex
+     * @param content       The string in which to search for the given regex
      * @param patternToFind The regex to search for within {@code content}.
-     * @param message The failure message to display if pattern not found in {@code content}
+     * @param message       The failure message to display if pattern not found in {@code content}
      */
     public static void assertMatchesMultiLine(final String content, final String patternToFind, final String message) {
         assertTrue(AtaTestHelper.matchesMultiLine(content, patternToFind), message);
@@ -89,14 +89,14 @@ public final class AtaAssertions {
     /**
      * Asserts that {@code expected} and {@code actual} are "close": that {@code actual}
      * is within 1% of {@code expected}.
-     *
+     * <p>
      * If you would like to specify your own margin of error (e.g. comparing to zero),
      * consider using the {@code assertClose(BigDecimal, BigDecimal, BigDecimal, String)}
      * version of this method.
      *
      * @param expected The expected BigDecimal value
-     * @param actual The actual BigDecimal to compare
-     * @param message The error message attached to the assertion fail if expected, actual are not "close"
+     * @param actual   The actual BigDecimal to compare
+     * @param message  The error message attached to the assertion fail if expected, actual are not "close"
      */
     public static void assertClose(BigDecimal expected, BigDecimal actual, String message) {
         if (null == expected) {
@@ -108,14 +108,14 @@ public final class AtaAssertions {
     /**
      * Asserts that {@code expected} and {@code actual} are "close", as defined by being within {@code margin}
      * of one another.
-     *
+     * <p>
      * {@code expected}, {@code actual}, and {@code margin} must all be non-null.
      * {@code margin} must be non-negative.
      *
      * @param expected The expected BigDecimal value
-     * @param actual The actual BigDecimal to compare
-     * @param margin The maximum distance between expected, actual for them to be "close" enough
-     * @param message The error message attached to the assertion fail if expected, actual are not "close"
+     * @param actual   The actual BigDecimal to compare
+     * @param margin   The maximum distance between expected, actual for them to be "close" enough
+     * @param message  The error message attached to the assertion fail if expected, actual are not "close"
      */
     public static void assertClose(
             BigDecimal expected,

@@ -27,11 +27,11 @@ import static org.mockito.Mockito.mock;
  * Integration tests for the DeliveringOnOurPromise project, intended for
  * regression testing purposes. These should all pass in the base project
  * and still pass as you progress through the project tasks.
- *
+ * <p>
  * Since these must pass the base project, we can't test for OFS promises,
  * multiple items, or confidence erasure. Instead, we will test all the
  * fixtures and ensure that they contain the expected DPS promise.
- *
+ * <p>
  * Additionally, we'll test that the order and promise headers are correct.
  */
 public class DeliveringOnOurPromiseIntegrationTests {

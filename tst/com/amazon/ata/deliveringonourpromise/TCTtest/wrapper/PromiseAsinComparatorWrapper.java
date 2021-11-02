@@ -47,10 +47,10 @@ public class PromiseAsinComparatorWrapper extends WrapperBase {
      */
     public int compare(Promise promise1, Promise promise2) {
         Method compareMethod = MethodQuery.inType(getWrappedClass())
-                                   .withExactName("compare")
-                                   .withExactArgTypes(ImmutableList.of(Promise.class, Promise.class))
-                                   .withReturnType(int.class)
-                                   .findMethodOrFail();
+                .withExactName("compare")
+                .withExactArgTypes(ImmutableList.of(Promise.class, Promise.class))
+                .withReturnType(int.class)
+                .findMethodOrFail();
 
         return (int) invokeInstanceMethodWithReturnValue(compareMethod, promise1, promise2);
     }
@@ -58,12 +58,13 @@ public class PromiseAsinComparatorWrapper extends WrapperBase {
     /**
      * Find the wrapped class, if it exists. If class not found, will
      * fail()
+     *
      * @return the PromiseAsinComparator class if it exists
      */
     public static Class<?> findPromiseAsinComparatorWrapperClass() {
         return ClassQuery.inExactPackage("com.amazon.ata.deliveringonourpromise.comparators")
-                   .withExactSimpleName("PromiseAsinComparator")
-                   .findClassOrFail();
+                .withExactSimpleName("PromiseAsinComparator")
+                .findClassOrFail();
     }
 
     private static Object constructComparator() {

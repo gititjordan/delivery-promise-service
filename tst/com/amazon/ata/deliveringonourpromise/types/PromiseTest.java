@@ -14,8 +14,8 @@ public class PromiseTest {
         // GIVEN
         ZonedDateTime deliveryDate = ZonedDateTime.now();
         Promise promise = Promise.builder()
-            .withDeliveryDate(null)
-            .build();
+                .withDeliveryDate(null)
+                .build();
         assertNull(promise.getDeliveryDate());
 
         // WHEN

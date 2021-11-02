@@ -9,15 +9,16 @@ public class NoClassFoundException extends ClassQueryException {
 
     /**
      * Creates a new {@code NoClassFoundException}.
+     *
      * @param classQuery the {@code ClassQuery} that ran into trouble.
      */
     public NoClassFoundException(final ClassQuery classQuery) {
         super(
-            classQuery,
-            String.format(
-                "No class found under package '%s' matching criteria: %s",
-                classQuery.getPackageName(),
-                classQuery.toString())
+                classQuery,
+                String.format(
+                        "No class found under package '%s' matching criteria: %s",
+                        classQuery.getPackageName(),
+                        classQuery.toString())
         );
     }
 }

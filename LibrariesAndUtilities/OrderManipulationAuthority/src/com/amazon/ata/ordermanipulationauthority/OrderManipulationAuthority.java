@@ -76,15 +76,15 @@ public class OrderManipulationAuthority {
         }
 
         return OrderResult.builder()
-                   .withOrderId(orderData.getOrderId())
-                   .withCustomerOrderItemList(orderResultItems)
-                   .withOrderShipmentList(orderShipments)
-                   .withCondition(OrderCondition.fromCode(orderData.getCondition()))
-                   .withCustomerId(orderData.getCustomerId())
-                   .withOrderDate(orderData.getOrderDate())
-                   .withShipOption(orderData.getShipOption())
-                   .withMarketplaceId(orderData.getMarketplaceId())
-                   .build();
+                .withOrderId(orderData.getOrderId())
+                .withCustomerOrderItemList(orderResultItems)
+                .withOrderShipmentList(orderShipments)
+                .withCondition(OrderCondition.fromCode(orderData.getCondition()))
+                .withCustomerId(orderData.getCustomerId())
+                .withOrderDate(orderData.getOrderDate())
+                .withShipOption(orderData.getShipOption())
+                .withMarketplaceId(orderData.getMarketplaceId())
+                .build();
     }
 
     private OrderShipment convertOrderShipmentDataToOrderResultShipment(OrderShipmentData orderShipmentData) {
@@ -97,40 +97,40 @@ public class OrderManipulationAuthority {
         }
 
         return OrderShipment.builder()
-                   .withShipmentId(orderShipmentData.getShipmentId())
-                   .withCondition(orderShipmentData.getCondition())
-                   .withCreationDate(orderShipmentData.getCreationDate())
-                   .withCustomerShipmentItems(shipmentItems)
-                   .withDeliveryDate(orderShipmentData.getDeliveryDate())
-                   .withShipDate(orderShipmentData.getShipDate())
-                   .withShipmentShipOption(orderShipmentData.getShipmentShipOption())
-                   .withWarehouseId(orderShipmentData.getWarehouseId())
-                   .withZip(orderShipmentData.getZip())
-                   .build();
+                .withShipmentId(orderShipmentData.getShipmentId())
+                .withCondition(orderShipmentData.getCondition())
+                .withCreationDate(orderShipmentData.getCreationDate())
+                .withCustomerShipmentItems(shipmentItems)
+                .withDeliveryDate(orderShipmentData.getDeliveryDate())
+                .withShipDate(orderShipmentData.getShipDate())
+                .withShipmentShipOption(orderShipmentData.getShipmentShipOption())
+                .withWarehouseId(orderShipmentData.getWarehouseId())
+                .withZip(orderShipmentData.getZip())
+                .build();
     }
 
     private OrderShipment.ShipmentItem convertShipmentItemDataToShipmentItem(
-        OrderShipmentData.CustomerShipmentItemData shipmentItemData
+            OrderShipmentData.CustomerShipmentItemData shipmentItemData
     ) {
         return new OrderShipment.ShipmentItem(
-            shipmentItemData.getCustomerOrderItemId(),
-            shipmentItemData.getQuantity()
+                shipmentItemData.getCustomerOrderItemId(),
+                shipmentItemData.getQuantity()
         );
     }
 
     private OrderResultItem convertOrderItemDataToOrderResultItem(OrderItemData orderItemData) {
         return OrderResultItem.builder()
-                   .withCustomerOrderItemId(orderItemData.getCustomerOrderItemId())
-                   .withOrderId(orderItemData.getOrderId())
-                   .withApprovalDate(orderItemData.getApprovalDate())
-                   .withAsin(orderItemData.getAsin())
-                   .withMerchantId(orderItemData.getMerchantId())
-                   .withQuantity(orderItemData.getQuantity())
-                   .withSupplyCode(orderItemData.getSupplyCode())
-                   .withSupplyCodeDate(orderItemData.getSupplyCodeDate())
-                   .withTitle(orderItemData.getTitle())
-                   .withIsConfidenceTracked(orderItemData.isConfidenceTracked())
-                   .withConfidence(orderItemData.getConfidence())
-                   .build();
+                .withCustomerOrderItemId(orderItemData.getCustomerOrderItemId())
+                .withOrderId(orderItemData.getOrderId())
+                .withApprovalDate(orderItemData.getApprovalDate())
+                .withAsin(orderItemData.getAsin())
+                .withMerchantId(orderItemData.getMerchantId())
+                .withQuantity(orderItemData.getQuantity())
+                .withSupplyCode(orderItemData.getSupplyCode())
+                .withSupplyCodeDate(orderItemData.getSupplyCodeDate())
+                .withTitle(orderItemData.getTitle())
+                .withIsConfidenceTracked(orderItemData.isConfidenceTracked())
+                .withConfidence(orderItemData.getConfidence())
+                .build();
     }
 }

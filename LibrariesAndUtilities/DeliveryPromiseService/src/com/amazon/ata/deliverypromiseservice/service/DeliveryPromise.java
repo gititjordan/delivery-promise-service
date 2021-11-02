@@ -159,6 +159,7 @@ public class DeliveryPromise {
 
         /**
          * Builds a new DeliveryPromise based on current builder state.
+         *
          * @return a new DeliveryPromise
          */
         public DeliveryPromise build() {

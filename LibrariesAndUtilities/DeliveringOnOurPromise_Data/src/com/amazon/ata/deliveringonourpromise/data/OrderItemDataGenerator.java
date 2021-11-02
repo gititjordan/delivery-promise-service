@@ -27,7 +27,7 @@ final class OrderItemDataGenerator {
     private long currentMerchantId = 14263472715L;
     private ZonedDateTime currentItemSupplyCodeDate = OrderDataGenerator.INITIAL_ORDER_DATE;
     private ZonedDateTime currentItemApprovalDate = ZonedDateTime.of(
-        2009, 8, 4, 11, 8, 5, 6, ZoneId.ofOffset("UTC", ZoneOffset.UTC)
+            2009, 8, 4, 11, 8, 5, 6, ZoneId.ofOffset("UTC", ZoneOffset.UTC)
     );
 
     // counters for rotating through lists of valid values
@@ -51,16 +51,16 @@ final class OrderItemDataGenerator {
         String asin = createItemAsin();
         String title = createItemTitleForAsin(asin);
         return OrderItemData.builder()
-                   .withCustomerOrderItemId(createCustomerOrderItemId())
-                   .withAsin(asin)
-                   .withTitle(title)
-                   .withQuantity(createItemQuantity())
-                   .withMerchantId(createItemMerchantId())
-                   .withApprovalDate(createItemApprovalDate())
-                   .withSupplyCode(createItemSupplyCode())
-                   .withSupplyCodeDate(createItemSupplyCodeDate())
-                   .withIsConfidenceTracked(createIsConfidenceTracked(asin))
-                   .withConfidence(createConfidence(asin));
+                .withCustomerOrderItemId(createCustomerOrderItemId())
+                .withAsin(asin)
+                .withTitle(title)
+                .withQuantity(createItemQuantity())
+                .withMerchantId(createItemMerchantId())
+                .withApprovalDate(createItemApprovalDate())
+                .withSupplyCode(createItemSupplyCode())
+                .withSupplyCodeDate(createItemSupplyCodeDate())
+                .withIsConfidenceTracked(createIsConfidenceTracked(asin))
+                .withConfidence(createConfidence(asin));
     }
 
     /*
@@ -72,15 +72,15 @@ final class OrderItemDataGenerator {
         titlesByAsin.put("B07BHHC4S1", "Architects of the West Kingdom");
         titlesByAsin.put("1984822179", "Normal People: A Novel");
         titlesByAsin.put("B000LQ78YY", "Stonepoint Emergency LED Road Flare Kit – "
-                                               + "Set of 3 Super Bright LED Roadside Beacons with Magnetic Base");
+                + "Set of 3 Super Bright LED Roadside Beacons with Magnetic Base");
         titlesByAsin.put("B0145IWKBE", "AmazonBasics Ladder Toss Set with Soft Carrying Case");
         titlesByAsin.put("B07MVQL5RT", "Greenworks 21-Inch 40V Brushless Push Mower, "
-                                               + "6AH Battery and Charger Included, M-210");
+                + "6AH Battery and Charger Included, M-210");
         titlesByAsin.put("B0019QEB86", "Miracle-Gro Indoor Plant Food, 48-Spikes");
         titlesByAsin.put("B07FDNSJ63", "Mamma Mia! 2-Movie Collection");
         titlesByAsin.put("B01BKTAY2I", "My Doggy Place - Ultra Absorbent Microfiber Dog Door Mat");
         titlesByAsin.put("B06XYZBCYP", "Levoit Kana Himalayan/Hymilain Sea, "
-                                               + "Pink Crystal Salt Rock Lamp, Night Light");
+                + "Pink Crystal Salt Rock Lamp, Night Light");
 
         asinTitles.addAll(titlesByAsin.keySet());
     }

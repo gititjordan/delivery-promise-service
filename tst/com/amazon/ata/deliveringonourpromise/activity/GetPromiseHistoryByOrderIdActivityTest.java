@@ -58,10 +58,10 @@ public class GetPromiseHistoryByOrderIdActivityTest {
             }
         }
         assertTrue(foundDpsPromise,
-                   String.format("Expected to find a DPS promise for order ID '%s', but promises were: %s",
-                                 orderId,
-                                 history.getPromises().toString()
-                   )
+                String.format("Expected to find a DPS promise for order ID '%s', but promises were: %s",
+                        orderId,
+                        history.getPromises().toString()
+                )
         );
     }
 }

@@ -43,7 +43,7 @@ public class Shell {
      * Constructs a Shell instance that will use the given service client.
      *
      * @param promiseHistoryClient The client to use to communicate with the promise history service.
-     * @param userHandler The ATAUserHandler to use for asking user for their input.
+     * @param userHandler          The ATAUserHandler to use for asking user for their input.
      */
     public Shell(PromiseHistoryClient promiseHistoryClient, ATAUserHandler userHandler) {
         this.promiseHistoryClient = promiseHistoryClient;
@@ -51,11 +51,12 @@ public class Shell {
     }
 
     // FIXME: I need some code to mess up Checkstyle. I put opening braces on their own line
+
     /**
      * Command Line Interface entry point. Arguments are ignored.
      *
      * @param args command line args (ignored).
-     * */
+     */
     public static void main(String[] args) {
         Shell shell = new Shell(App.getPromiseHistoryClient(), new ATAUserHandler());
         shell.processCommandLineArgs(args);

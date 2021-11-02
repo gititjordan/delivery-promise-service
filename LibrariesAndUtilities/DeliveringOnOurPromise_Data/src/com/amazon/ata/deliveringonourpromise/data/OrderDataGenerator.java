@@ -15,7 +15,7 @@ final class OrderDataGenerator {
     // shared with other generators so they can keep dates ~in sync with order dates
     static final int ORDER_DATA_DATE_HOURS_INCREMENT = 9;
     static final ZonedDateTime INITIAL_ORDER_DATE = ZonedDateTime.of(
-        2018, 7, 13, 15, 4, 11, 0, ZoneId.ofOffset("UTC", ZoneOffset.UTC)
+            2018, 7, 13, 15, 4, 11, 0, ZoneId.ofOffset("UTC", ZoneOffset.UTC)
     );
 
     // default values
@@ -35,10 +35,12 @@ final class OrderDataGenerator {
     private final OrderShipmentDataGenerator orderShipmentDataGenerator = OrderShipmentDataGenerator.getGenerator();
     private final OrderItemDataGenerator orderItemDataGenerator = OrderItemDataGenerator.getGenerator();
 
-    private OrderDataGenerator() {}
+    private OrderDataGenerator() {
+    }
 
     /**
      * Returns a generator instance ready to create OrderData.Builders.
+     *
      * @return OrderDataGenerator
      */
     static OrderDataGenerator getGenerator() {
@@ -48,6 +50,7 @@ final class OrderDataGenerator {
     /**
      * Returns an Order builder with reasonable default values and caller can override if desired.
      * If caller would like to set items (and shipments) directly, call with numOrderItems = 0
+     *
      * @param numOrderItems The number of order items to create within the order (0 is allowed)
      * @return an OrderItem.Builder with valid values and the specified number of OrderItems
      */
@@ -82,20 +85,20 @@ final class OrderDataGenerator {
             // if there are any items in this shipment, add the shipment to the list
             if (!shipmentItems.isEmpty()) {
                 orderShipments.add(orderShipmentDataGenerator.buildShipmentData()
-                                       .withCustomerShipmentItems(shipmentItems)
-                                       .build()
+                        .withCustomerShipmentItems(shipmentItems)
+                        .build()
                 );
             }
         }
 
         return OrderData.builder()
-                   .withCondition(createOrderCondition())
-                   .withCustomerId(createOrderCustomerId())
-                   .withMarketplaceId(createOrderMarketplaceId())
-                   .withOrderDate(createOrderDate())
-                   .withShipOption(createOrderShipOption())
-                   .withCustomerOrderItemList(orderItems)
-                   .withCustomerShipments(orderShipments);
+                .withCondition(createOrderCondition())
+                .withCustomerId(createOrderCustomerId())
+                .withMarketplaceId(createOrderMarketplaceId())
+                .withOrderDate(createOrderDate())
+                .withShipOption(createOrderShipOption())
+                .withCustomerOrderItemList(orderItems)
+                .withCustomerShipments(orderShipments);
     }
 
     // helpers to deterministically return varying ORDER default/sample data

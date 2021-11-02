@@ -17,6 +17,7 @@ public class ATATestExecutionListener implements TestExecutionListener {
 
     /**
      * Instantiates a new ATATestExecutionListener.
+     *
      * @param suiteReport An empty report with the id of the test suite this object is listening to
      */
     public ATATestExecutionListener(ATATestSuiteReport suiteReport) {

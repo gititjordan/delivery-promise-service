@@ -180,12 +180,12 @@ public class OrderFulfillmentServiceTest {
 
         // THEN
         assertEquals(promiseDate,
-                     orderPromise.getPromiseLatestArrivalDate(),
-                     String.format("Expected DPS and OFS promise arrival dates to match, " +
-                                   "but DPS's was %s and OFS's was %s",
-                                   promiseDate,
-                                   orderPromise.getPromiseLatestArrivalDate()
-                     )
+                orderPromise.getPromiseLatestArrivalDate(),
+                String.format("Expected DPS and OFS promise arrival dates to match, " +
+                                "but DPS's was %s and OFS's was %s",
+                        promiseDate,
+                        orderPromise.getPromiseLatestArrivalDate()
+                )
         );
     }
 
@@ -201,11 +201,11 @@ public class OrderFulfillmentServiceTest {
 
         // THEN
         assertTrue(deliveryPromiseDate.compareTo(orderPromise.getPromiseLatestArrivalDate()) < 0,
-                   String.format("Expected OFS's latest arrival date to be after DPS's (%s), " +
-                                 "but OFS's was %s",
-                                 deliveryPromiseDate,
-                                 orderPromise.getPromiseLatestArrivalDate()
-                   ));
+                String.format("Expected OFS's latest arrival date to be after DPS's (%s), " +
+                                "but OFS's was %s",
+                        deliveryPromiseDate,
+                        orderPromise.getPromiseLatestArrivalDate()
+                ));
     }
 
     /* Sets up DPS to return a spy DeliveryPromise, on which we can modify behavior */
@@ -215,11 +215,11 @@ public class OrderFulfillmentServiceTest {
         ZonedDateTime latestShipDate = latestArrivalDate.minusHours(18);
 
         DeliveryPromise spyPromise = spy(DeliveryPromise.builder()
-                                             .withCustomerOrderId(orderId)
-                                             .withCustomerOrderItemId(orderItemId)
-                                             .withPromiseLatestArrivalDate(orderData.getOrderDate().plusDays(2))
-                                             .withPromiseLatestShipDate(latestShipDate)
-                                             .build()
+                .withCustomerOrderId(orderId)
+                .withCustomerOrderItemId(orderItemId)
+                .withPromiseLatestArrivalDate(orderData.getOrderDate().plusDays(2))
+                .withPromiseLatestShipDate(latestShipDate)
+                .build()
         );
         when(mockDeliveryPromiseService.getDeliveryPromise(orderItemId)).thenReturn(spyPromise);
 
@@ -238,7 +238,7 @@ public class OrderFulfillmentServiceTest {
                 when(shipmentWithDpsOpsAgreeing.doDpsAndOfsPromisesAgree()).thenReturn(doDpsAndOfsAgree);
                 when(shipmentWithDpsOpsAgreeing.isOfsPromiseActive()).thenReturn(true);
                 when(orderDataWithDpsOfsAgreement.getCustomerShipments())
-                    .thenReturn(Arrays.asList(shipmentWithDpsOpsAgreeing));
+                        .thenReturn(Arrays.asList(shipmentWithDpsOpsAgreeing));
                 when(spyOrderDatastore.getOrderData(orderId)).thenReturn(orderDataWithDpsOfsAgreement);
             }
         }

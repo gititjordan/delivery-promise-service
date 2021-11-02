@@ -86,19 +86,19 @@ public class OrderFulfillmentService {
         }
 
         return OrderPromise.builder()
-                   .withCustomerOrderId(orderData.getOrderId())
-                   .withCustomerOrderItemId(customerOrderItemId)
-                   .withAsin(orderItemData.getAsin())
-                   .withIsActive(isOfsPromiseActiveForOrderItem(orderData, customerOrderItemId))
-                   .withPromiseQuantity(orderItemData.getQuantity())
-                   .withPromiseEffectiveDate(promiseEffectiveDate)
-                   .withPromiseLatestShipDate(promiseLatestShipDate)
-                   .withPromiseLatestArrivalDate(promiseLatestArrivalDate)
-                   .withFulfillmentSvcSubclassId("1")
-                   .withPlanQualityTypeCode("Normal")
-                   .withPromiseDataSource("SLAM")
-                   .withPromiseProvidedBy("OFS")
-                   .build();
+                .withCustomerOrderId(orderData.getOrderId())
+                .withCustomerOrderItemId(customerOrderItemId)
+                .withAsin(orderItemData.getAsin())
+                .withIsActive(isOfsPromiseActiveForOrderItem(orderData, customerOrderItemId))
+                .withPromiseQuantity(orderItemData.getQuantity())
+                .withPromiseEffectiveDate(promiseEffectiveDate)
+                .withPromiseLatestShipDate(promiseLatestShipDate)
+                .withPromiseLatestArrivalDate(promiseLatestArrivalDate)
+                .withFulfillmentSvcSubclassId("1")
+                .withPlanQualityTypeCode("Normal")
+                .withPromiseDataSource("SLAM")
+                .withPromiseProvidedBy("OFS")
+                .build();
     }
 
     /*

@@ -2,7 +2,7 @@
 <suite name="ServiceTCTTestsSuite" verbose="2" parallel="false" thread-count="1">
     <test name="MasteryTaskOneTests">
         <packages>
-            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.mastery.task1.*" />
+            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.mastery.task1.*"/>
         </packages>
     </test>
 </suite>

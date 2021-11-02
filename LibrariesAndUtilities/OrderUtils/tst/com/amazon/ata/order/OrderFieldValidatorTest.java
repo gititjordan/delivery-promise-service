@@ -36,7 +36,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -75,7 +75,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
 
@@ -89,7 +89,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -128,7 +128,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -141,7 +141,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -154,7 +154,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
+                String.format("Expected isValidOrderId('%s') to return false, but returned true", invalidOrderId));
     }
 
     @Test
@@ -167,7 +167,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertTrue(isValid,
-                    String.format("Expected isValidOrderId('%s') to return true, but returned false", validOrderId));
+                String.format("Expected isValidOrderId('%s') to return true, but returned false", validOrderId));
     }
 
     // condition code
@@ -182,7 +182,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidCondition(%d) to return false, but returned true", invalidCode));
+                String.format("Expected isValidCondition(%d) to return false, but returned true", invalidCode));
     }
 
     @Test
@@ -195,7 +195,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidCondition(%d) to return false, but returned true", invalidCode));
+                String.format("Expected isValidCondition(%d) to return false, but returned true", invalidCode));
     }
 
     @Test
@@ -208,7 +208,7 @@ public class OrderFieldValidatorTest {
 
         // THEN
         assertFalse(isValid,
-                    String.format("Expected isValidCondition(%d) to return false, but returned true", invalidCode));
+                String.format("Expected isValidCondition(%d) to return false, but returned true", invalidCode));
     }
 
     @Test
@@ -219,7 +219,7 @@ public class OrderFieldValidatorTest {
         // WHEN + THEN
         for (int validCode : validCodes) {
             assertTrue(orderFieldValidator.isValidCondition(validCode),
-                        String.format("Expected isValidCondition(%d) to return true, but returned false", validCode));
+                    String.format("Expected isValidCondition(%d) to return true, but returned false", validCode));
         }
     }
 }

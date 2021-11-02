@@ -20,11 +20,11 @@ import java.util.Set;
  * <p>
  * Allows for specifying the containing class (with {@code inClass}), and the
  * argument types (with {@code withExactArgTypes}).
- *
+ * <p>
  * Note: Just calling {@code ConstructorQuery.inClass(MyClass.class).findConstructors()} is
  * equivalent to {@code MyClass.class.getConstructors()}, but returns a {@code Set<Constructor>} rather
  * than {@code Constructor[]}.
- *
+ * <p>
  * Examples:
  * <ul>
  *     <li><pre>
@@ -79,6 +79,7 @@ public final class ConstructorQuery {
      * <p>
      * Providing a {@code null} type results in {@code IllegalArgumentException}.
      * </p>
+     *
      * @param clazz The class in which to look for the constructor(s) of interest
      * @return a new {@code ConstructorQuery} to build a query from
      */
@@ -92,6 +93,7 @@ public final class ConstructorQuery {
 
     /**
      * Specifies filter for only no-arg constructor.
+     *
      * @return an updated {@code ConstructorQuery} with new filter applied.
      */
     public ConstructorQuery withNoArgs() {
@@ -102,9 +104,10 @@ public final class ConstructorQuery {
      * Specifies filter with exact argument types, which can be repeated (hint: but don't try to
      * use a {@code Set} for that). The order of the arguments does NOT matter.
      * <p>
-     *     Providing {@code null} {@code argTypes} or including a {@code null} in the {@code argTypes}
-     *     collection will throw {@code IllegalArgumentException}.
+     * Providing {@code null} {@code argTypes} or including a {@code null} in the {@code argTypes}
+     * collection will throw {@code IllegalArgumentException}.
      * </p>
+     *
      * @param argTypes The argument types to find constructor for
      * @return an updated {@code ConstructorQuery} with new filter applied.
      */
@@ -117,10 +120,10 @@ public final class ConstructorQuery {
         }
         if (argTypes.size() > MethodQuery.MAX_ARGUMENTS) {
             throw new IllegalArgumentException(
-                String.format(
-                    "withExactArgTypes will not accept more than %d arguments: %s",
-                    MethodQuery.MAX_ARGUMENTS,
-                    argTypes)
+                    String.format(
+                            "withExactArgTypes will not accept more than %d arguments: %s",
+                            MethodQuery.MAX_ARGUMENTS,
+                            argTypes)
             );
         }
         for (Class<?> argType : argTypes) {

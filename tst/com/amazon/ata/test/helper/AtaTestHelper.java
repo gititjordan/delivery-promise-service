@@ -42,7 +42,7 @@ public class AtaTestHelper {
      * Handles the reporting for a test failing due to unexpected exception (they tend to lack information for our
      * TCTs).
      *
-     * @param e The throwable that occurred
+     * @param e              The throwable that occurred
      * @param failureSummary Summary of the error condition that occurred (begins the message reported in the
      *                       assertion failure
      */
@@ -51,30 +51,29 @@ public class AtaTestHelper {
         PrintWriter printWriter = new PrintWriter(stringWriter);
         e.printStackTrace(printWriter);
         String failMessage = String.format(
-            "%s. Failed with %s: %s%n%s",
-            failureSummary,
-            e.getClass().getSimpleName(),
-            e.getMessage(),
-            stringWriter.toString());
+                "%s. Failed with %s: %s%n%s",
+                failureSummary,
+                e.getClass().getSimpleName(),
+                e.getMessage(),
+                stringWriter.toString());
         fail(failMessage);
     }
 
     /**
-     * @deprecated  - Moved to {@link FreeFormTextHelper}.
-     *
+     * @param content       The string in which to search for the given regex
+     * @param patternToFind The regex to search for within {@code content}.
+     * @return If the pattern was found on a single line
+     * @deprecated - Moved to {@link FreeFormTextHelper}.
+     * <p>
      * Determines if the given (multiline) content has a match within a single line somewhere in it that corresponds
      * with the given regular expression string.
-     *
+     * <p>
      * If you contain a dot ({@code .}) in your pattern, it will *not* match newline
      * characters, so your pattern must all be found on a single line of {@code content}. If you need to match a pattern
      * across multiple lines, use {@code matchesMultiLine}.
-     *
+     * <p>
      * Also note that {@code ^} will only match the beginning of the entire content string; {@code $} will only match
      * the end of the entire content string;
-     *
-     * @param content The string in which to search for the given regex
-     * @param patternToFind The regex to search for within {@code content}.
-     * @return If the pattern was found on a single line
      */
     @Deprecated
     public static boolean matchesSingleLine(final String content, final String patternToFind) {
@@ -83,20 +82,19 @@ public class AtaTestHelper {
     }
 
     /**
+     * @param content       The string in which to search for the given regex
+     * @param patternToFind The regex to search for within {@code content}.
+     * @return If the pattern was found across multiple lines
      * @deprecated - Moved to {@link FreeFormTextHelper}.
-     *
+     * <p>
      * Determines if the given (multiline) content has a match that may span lines in it that corresponds with the given
      * regular expression string.
-     *
+     * <p>
      * If you contain a dot ({@code .}) in your pattern, it *will* match newline characters, so
      * your pattern might be matching across lines. If you intend to match a pattern that should only exist on a
      * single line, use {@code matchesSingleLine}.
-     *
+     * <p>
      * Also note that {@code ^} will match beginning of *any* line; {@code $} will match end of *any* line.
-     *
-     * @param content The string in which to search for the given regex
-     * @param patternToFind The regex to search for within {@code content}.
-     * @return If the pattern was found across multiple lines
      */
     @Deprecated
     public static boolean matchesMultiLine(final String content, final String patternToFind) {

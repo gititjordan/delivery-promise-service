@@ -29,7 +29,7 @@ public class MasteryTaskTwoTests {
 
         // THEN
         assertThat(matches.size())
-            .as("Expected multiple test names in OrderDaoTestPlan.md!")
-            .isGreaterThan(1);
+                .as("Expected multiple test names in OrderDaoTestPlan.md!")
+                .isGreaterThan(1);
     }
 }

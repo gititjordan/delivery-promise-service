@@ -1,4 +1,4 @@
- package com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.mastery.task4;
+package com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.mastery.task4;
 
 import com.amazon.ata.deliveringonourpromise.App;
 import com.amazon.ata.deliveringonourpromise.dao.PromiseDao;
@@ -33,7 +33,7 @@ public class MasteryTaskFourTests {
     @Test
     public void masteryTaskFour_masteryTaskFourFile_existsAndItIsNotEmpty() {
         // GIVEN
-        String masteryTaskFourFileName = "resources/mastery-task4.txt";
+        String masteryTaskFourFileName = "mastery-task4.txt";
 
         // WHEN
         String content = AtaTestHelper.getFileContentFromResources(masteryTaskFourFileName);
@@ -46,25 +46,25 @@ public class MasteryTaskFourTests {
     public void masteryTaskFour_ofsClientClass_existsAndHasASingleMethod() {
         // GIVEN
         Class<?> ofsClientClass =
-            ClassQuery.inExactPackage("com.amazon.ata.deliveringonourpromise.orderfulfillmentservice")
-            .withExactSimpleName("OrderFulfillmentServiceClient")
-            .findClassOrFail();
+                ClassQuery.inExactPackage("com.amazon.ata.deliveringonourpromise.orderfulfillmentservice")
+                        .withExactSimpleName("OrderFulfillmentServiceClient")
+                        .findClassOrFail();
 
         // WHEN
         Method[] publicMethods = Arrays.stream(ofsClientClass.getDeclaredMethods())
-            .filter(method -> Modifier.isPublic(method.getModifiers()))
-            .toArray(Method[]::new);
+                .filter(method -> Modifier.isPublic(method.getModifiers()))
+                .toArray(Method[]::new);
 
         // THEN
         assertTrue(1 == publicMethods.length, "Expected OrderFulfillmentServiceClient to have a single public method!");
 
         Class<?> ofsMethodReturnType = publicMethods[0].getReturnType();
         assertTrue(ofsMethodReturnType == Promise.class,
-            "Expected OrderFulfillmentServiceClient public method to have Promise as return type!");
+                "Expected OrderFulfillmentServiceClient public method to have Promise as return type!");
 
         Class<?>[] ofsMethodParameterTypes = publicMethods[0].getParameterTypes();
         assertTrue(1 == ofsMethodParameterTypes.length && ofsMethodParameterTypes[0] == String.class,
-            "Expected OrderFulfillmentServiceClient public method to take single parameter of String type!");
+                "Expected OrderFulfillmentServiceClient public method to take single parameter of String type!");
     }
 
     @Test
@@ -86,8 +86,8 @@ public class MasteryTaskFourTests {
             }
         }
         assertTrue(containsAList,
-                   String.format("Expected %s class to support using multiple PromiseClients",
-                                 PromiseDao.class.getSimpleName())
+                String.format("Expected %s class to support using multiple PromiseClients",
+                        PromiseDao.class.getSimpleName())
         );
     }
 
@@ -95,9 +95,9 @@ public class MasteryTaskFourTests {
     public void masteryTaskFour_promiseClients_arePolymorphicallyInterchangeable() {
         // GIVEN
         Class<?> ofsClientClass =
-            ClassQuery.inExactPackage("com.amazon.ata.deliveringonourpromise.orderfulfillmentservice")
-                .withExactSimpleName("OrderFulfillmentServiceClient")
-                .findClassOrFail();
+                ClassQuery.inExactPackage("com.amazon.ata.deliveringonourpromise.orderfulfillmentservice")
+                        .withExactSimpleName("OrderFulfillmentServiceClient")
+                        .findClassOrFail();
 
         Class<?> dpsClientClass = DeliveryPromiseServiceClient.class;
 
@@ -107,21 +107,21 @@ public class MasteryTaskFourTests {
 
         // THEN
         assertTrue(1 == ofsClientClassInterfaces.length &&
-                1 == dpsClientClassInterfaces.length &&
-                ofsClientClassInterfaces[0] == dpsClientClassInterfaces[0],
-            "Expected Promise clients classes to be polymorphically interchangeable!");
+                        1 == dpsClientClassInterfaces.length &&
+                        ofsClientClassInterfaces[0] == dpsClientClassInterfaces[0],
+                "Expected Promise clients classes to be polymorphically interchangeable!");
 
         Method[] promiseClientMethods = ofsClientClassInterfaces[0].getMethods();
 
         assertTrue(1 == promiseClientMethods.length,
-            "Expected Promise clients to have one common method!");
+                "Expected Promise clients to have one common method!");
 
         assertTrue(Promise.class == promiseClientMethods[0].getReturnType(),
-            "Expected Promise clients method to return Promise type!");
+                "Expected Promise clients method to return Promise type!");
 
         Class<?>[] parameterTypes = promiseClientMethods[0].getParameterTypes();
         assertTrue(1 == parameterTypes.length && String.class == parameterTypes[0],
-            "Expected Promise clients method to take single parameter of String type!");
+                "Expected Promise clients method to take single parameter of String type!");
     }
 
     @Test
@@ -137,7 +137,7 @@ public class MasteryTaskFourTests {
             promiseHistory = client.getPromiseHistoryByOrderId(orderId);
         } catch (Exception e) {
             fail("Expected OrderFulfillmentServiceClient to not throw an exception when retrieving order: " +
-                orderId);
+                    orderId);
         }
 
         //THEN
@@ -148,7 +148,7 @@ public class MasteryTaskFourTests {
             }
         }
         assertTrue(providedByOfs,
-            "Expected OrderFulfillmentServiceClient to provide promise from OrderFulfillmentService for order: " +
-            orderId);
+                "Expected OrderFulfillmentServiceClient to provide promise from OrderFulfillmentService for order: " +
+                        orderId);
     }
 }

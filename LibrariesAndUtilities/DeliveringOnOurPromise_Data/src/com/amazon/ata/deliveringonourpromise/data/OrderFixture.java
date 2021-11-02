@@ -49,7 +49,7 @@ public class OrderFixture {
             return Collections.emptyList();
         }
         return orderData.getCustomerOrderItemList().stream()
-                   .map(OrderItemData::getCustomerOrderItemId)
-                   .collect(Collectors.toList());
+                .map(OrderItemData::getCustomerOrderItemId)
+                .collect(Collectors.toList());
     }
 }

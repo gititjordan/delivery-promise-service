@@ -13,22 +13,23 @@ public class MultipleMethodsFoundException extends MethodQueryException {
 
     /**
      * Creates a new {@code MultipleMethodsFoundException}.
+     *
      * @param methodQuery the {@code MethodQuery} that ran into trouble.
-     * @param methods the multiple methods matching the method query
+     * @param methods     the multiple methods matching the method query
      */
     public MultipleMethodsFoundException(final MethodQuery methodQuery, final Set<Method> methods) {
         super(
-            methodQuery,
-            String.format(
-                "Multiple methods in type %s (%s) matching criteria: %s",
-                methodQuery.getContainingType(),
-                getMethodNames(methods), methodQuery.toString())
+                methodQuery,
+                String.format(
+                        "Multiple methods in type %s (%s) matching criteria: %s",
+                        methodQuery.getContainingType(),
+                        getMethodNames(methods), methodQuery.toString())
         );
     }
 
     private static String getMethodNames(final Set<Method> methods) {
         return methods.stream()
-            .map(Method::getName)
-            .collect(Collectors.joining(", "));
+                .map(Method::getName)
+                .collect(Collectors.joining(", "));
     }
 }

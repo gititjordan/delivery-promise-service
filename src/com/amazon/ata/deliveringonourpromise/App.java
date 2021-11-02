@@ -16,10 +16,12 @@ import com.amazon.ata.ordermanipulationauthority.OrderManipulationAuthority;
  */
 public class App {
     /* don't instantiate me */
-    private App() {}
+    private App() {
+    }
 
     /**
      * Fetch a new PromiseHistoryClient with all of its dependencies loaded for use in the Shell!
+     *
      * @return fully loaded PromiseHistoryClient, ready for service! (er, client)
      */
     public static PromiseHistoryClient getPromiseHistoryClient() {
@@ -36,9 +38,10 @@ public class App {
     public static OrderDao getOrderDao() {
         return new OrderDao(getOrderManipulationAuthorityClient());
     }
+
     public static PromiseDao getPromiseDao() {
         return new PromiseDao(getDeliveryPromiseServiceClient(),
-                              getOrderManipulationAuthorityClient()
+                getOrderManipulationAuthorityClient()
         );
     }
 
@@ -46,6 +49,7 @@ public class App {
     public static OrderManipulationAuthorityClient getOrderManipulationAuthorityClient() {
         return new OrderManipulationAuthorityClient(getOrderManipulationAuthority());
     }
+
     public static DeliveryPromiseServiceClient getDeliveryPromiseServiceClient() {
         return new DeliveryPromiseServiceClient(getDeliveryPromiseService());
     }
@@ -54,6 +58,7 @@ public class App {
     public static OrderManipulationAuthority getOrderManipulationAuthority() {
         return new OrderManipulationAuthority(getOrderDatastore());
     }
+
     public static DeliveryPromiseService getDeliveryPromiseService() {
         return new DeliveryPromiseService(getOrderDatastore());
     }

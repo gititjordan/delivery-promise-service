@@ -18,7 +18,8 @@ public final class OrderShipment {
     private String shipmentShipOption;
     private ZonedDateTime deliveryDate;
 
-    private OrderShipment() {}
+    private OrderShipment() {
+    }
 
     public String getShipmentId() {
         return shipmentId;
@@ -58,6 +59,7 @@ public final class OrderShipment {
 
     /**
      * Indicates if this shipment contains the specified order item.
+     *
      * @param orderItemId the order item ID to determine if this shipment includes or not
      * @return true if this shipment includes orderItemId; false otherwise
      */
@@ -75,20 +77,21 @@ public final class OrderShipment {
     @Override
     public String toString() {
         return "OrderShipment{" +
-               "shipmentId='" + shipmentId + '\'' +
-               ", zip='" + zip + '\'' +
-               ", condition='" + condition + '\'' +
-               ", warehouseId='" + warehouseId + '\'' +
-               ", customerShipmentItems=" + customerShipmentItems +
-               ", shipDate=" + shipDate +
-               ", creationDate=" + creationDate +
-               ", shipmentShipOption='" + shipmentShipOption + '\'' +
-               ", deliveryDate=" + deliveryDate +
-               '}';
+                "shipmentId='" + shipmentId + '\'' +
+                ", zip='" + zip + '\'' +
+                ", condition='" + condition + '\'' +
+                ", warehouseId='" + warehouseId + '\'' +
+                ", customerShipmentItems=" + customerShipmentItems +
+                ", shipDate=" + shipDate +
+                ", creationDate=" + creationDate +
+                ", shipmentShipOption='" + shipmentShipOption + '\'' +
+                ", deliveryDate=" + deliveryDate +
+                '}';
     }
 
     /**
      * Returns a builder object suitable for building an OrderShipment.
+     *
      * @return Builder, ready to build an OrderShipment
      */
     public static Builder builder() {
@@ -160,6 +163,7 @@ public final class OrderShipment {
 
         /**
          * Builds and returns an OrderShipment from the builder state.
+         *
          * @return newly minted OrderShipment
          */
         public OrderShipment build() {
@@ -187,8 +191,9 @@ public final class OrderShipment {
 
         /**
          * Creates a ShipmentItem from quantity and order item ID.
+         *
          * @param customerOrderItemId the order item that this shipment item corresponds to
-         * @param quantity number of the item in this shipment
+         * @param quantity            number of the item in this shipment
          */
         public ShipmentItem(String customerOrderItemId, int quantity) {
             this.customerOrderItemId = customerOrderItemId;
@@ -206,9 +211,9 @@ public final class OrderShipment {
         @Override
         public String toString() {
             return "ShipmentItem{" +
-                   "customerOrderItemId='" + customerOrderItemId + '\'' +
-                   ", quantity=" + quantity +
-                   '}';
+                    "customerOrderItemId='" + customerOrderItemId + '\'' +
+                    ", quantity=" + quantity +
+                    '}';
         }
     }
 }

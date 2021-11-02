@@ -20,7 +20,8 @@ public final class OrderResult {
     private String shipOption;
     private String marketplaceId;
 
-    private OrderResult() {}
+    private OrderResult() {
+    }
 
     public String getOrderId() {
         return orderId;
@@ -122,6 +123,7 @@ public final class OrderResult {
 
         /**
          * Builds a new OrderResult from the builder state.
+         *
          * @return newly minted OrderResult
          */
         public OrderResult build() {

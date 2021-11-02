@@ -75,15 +75,15 @@ public final class OrderData {
     @Override
     public String toString() {
         return "OrderData{"
-               + "orderId='" + orderId + '\''
-               + ", customerId='" + customerId + '\''
-               + ", marketplaceId='" + marketplaceId + '\''
-               + ", condition=" + condition
-               + ", customerOrderItemList=" + customerOrderItemList
-               + ", customerShipments=" + customerShipments
-               + ", shipOption='" + shipOption + '\''
-               + ", orderDate=" + orderDate
-               + '}';
+                + "orderId='" + orderId + '\''
+                + ", customerId='" + customerId + '\''
+                + ", marketplaceId='" + marketplaceId + '\''
+                + ", condition=" + condition
+                + ", customerOrderItemList=" + customerOrderItemList
+                + ", customerShipments=" + customerShipments
+                + ", shipOption='" + shipOption + '\''
+                + ", orderDate=" + orderDate
+                + '}';
     }
 
     /**

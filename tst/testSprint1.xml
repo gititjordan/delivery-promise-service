@@ -2,11 +2,11 @@
 <suite name="ServiceTCTTestsSuite" verbose="2" parallel="false" thread-count="1">
     <test name="testingSprint1">
         <packages>
-            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.preparedness.task2.*" />
-            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.preparedness.task3.*" />
-            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.preparedness.task4.*" />
-            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.mastery.task1.*" />
-            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.mastery.task2.*" />
+            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.preparedness.task2.*"/>
+            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.preparedness.task3.*"/>
+            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.preparedness.task4.*"/>
+            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.mastery.task1.*"/>
+            <package name="com.amazon.ata.deliveringonourpromise.TCTtest.taskcompletion.mastery.task2.*"/>
         </packages>
     </test>
 </suite>

@@ -45,22 +45,22 @@ public class PromiseDaoTest {
         // We're doing this (not isolating the DAO from dependencies) because we haven't covered mocking yet
         // Note that this logic depends on the above orders being single-item orders
         shippedOrderItemId = omaClient
-                                 .getCustomerOrderByOrderId(shippedOrderId)
-                                 .getCustomerOrderItemList()
-                                 .get(0)
-                                 .getCustomerOrderItemId();
+                .getCustomerOrderByOrderId(shippedOrderId)
+                .getCustomerOrderItemList()
+                .get(0)
+                .getCustomerOrderItemId();
         shippedDeliveryPromise = dpsClient.getDeliveryPromiseByOrderItemId(shippedOrderItemId);
 
         deliveredOrderItemId = omaClient
-                                   .getCustomerOrderByOrderId(deliveredOrderId)
-                                   .getCustomerOrderItemList()
-                                   .get(0)
-                                   .getCustomerOrderItemId();
+                .getCustomerOrderByOrderId(deliveredOrderId)
+                .getCustomerOrderItemList()
+                .get(0)
+                .getCustomerOrderItemId();
         deliveredDeliveryPromise = dpsClient.getDeliveryPromiseByOrderItemId(deliveredOrderItemId);
         deliveredDeliveryDate = omaClient
-                                    .getCustomerOrderByOrderId(deliveredOrderId)
-                                    .getOrderShipmentList().get(0)
-                                    .getDeliveryDate();
+                .getCustomerOrderByOrderId(deliveredOrderId)
+                .getOrderShipmentList().get(0)
+                .getDeliveryDate();
 
         dao = new PromiseDao(dpsClient, omaClient);
     }
@@ -87,7 +87,7 @@ public class PromiseDaoTest {
         Promise dpsPromise = findPromiseFromSource(promises, "DPS");
         assertNotNull(dpsPromise);
         assertEquals(deliveredDeliveryPromise.getPromiseLatestArrivalDate(),
-                     dpsPromise.getPromiseLatestArrivalDate()
+                dpsPromise.getPromiseLatestArrivalDate()
         );
     }
 
@@ -198,7 +198,7 @@ public class PromiseDaoTest {
     /**
      * Searches through the given Promises looking for a Promise from the provider indicated in promiseProvidedBy.
      *
-     * @param promises the List of Promises to search through for a Promise from given provider
+     * @param promises          the List of Promises to search through for a Promise from given provider
      * @param promiseProvidedBy String representation of the service provider (e.g. "DPS", "OFS")
      * @return the Promise from this list that came from the specified provider, if any exists; null otherwise
      */

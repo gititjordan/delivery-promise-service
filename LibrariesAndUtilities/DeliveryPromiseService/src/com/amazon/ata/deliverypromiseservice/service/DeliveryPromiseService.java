@@ -56,18 +56,18 @@ public class DeliveryPromiseService {
         }
 
         return DeliveryPromise.builder()
-                   .withCustomerOrderId(orderData.getOrderId())
-                   .withCustomerOrderItemId(orderItemData.getCustomerOrderItemId())
-                   .withPromiseQuantity(orderItemData.getQuantity())
-                   .withFulfillmentSvcSubclassId("2")
-                   .withPromiseDataSource("SLAM")
-                   .withPromiseEffectiveDate(promiseEffectiveDate)
-                   .withIsActive(isDpsPromiseActive)
-                   .withPromiseLatestShipDate(promiseLatestShipDate)
-                   .withPromiseProvidedBy("DPS")
-                   .withAsin(orderItemData.getAsin())
-                   .withPlanQualityTypeCode("Normal")
-                   .withPromiseLatestArrivalDate(promiseLatestArrivalDate)
-                   .build();
+                .withCustomerOrderId(orderData.getOrderId())
+                .withCustomerOrderItemId(orderItemData.getCustomerOrderItemId())
+                .withPromiseQuantity(orderItemData.getQuantity())
+                .withFulfillmentSvcSubclassId("2")
+                .withPromiseDataSource("SLAM")
+                .withPromiseEffectiveDate(promiseEffectiveDate)
+                .withIsActive(isDpsPromiseActive)
+                .withPromiseLatestShipDate(promiseLatestShipDate)
+                .withPromiseProvidedBy("DPS")
+                .withAsin(orderItemData.getAsin())
+                .withPlanQualityTypeCode("Normal")
+                .withPromiseLatestArrivalDate(promiseLatestArrivalDate)
+                .build();
     }
 }

@@ -22,10 +22,10 @@ public class DeliveryPromiseServiceClientTest {
         client = App.getDeliveryPromiseServiceClient();
         String orderId = "111-7497023-2960776";
         orderItemId = OrderDatastore.getDatastore()
-                                     .getOrderData(orderId)
-                                     .getCustomerOrderItemList()
-                                     .get(0)
-                                     .getCustomerOrderItemId();
+                .getOrderData(orderId)
+                .getCustomerOrderItemList()
+                .get(0)
+                .getCustomerOrderItemId();
     }
 
     @Test

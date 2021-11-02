@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * DAO implementation for orders.
  */
- public class OrderDao implements ReadOnlyDao<String, Order> {
+public class OrderDao implements ReadOnlyDao<String, Order> {
 
     private OrderManipulationAuthorityClient omaClient;
 
@@ -41,38 +41,38 @@ import java.util.List;
             return null;
         }
 
-        if (! new OrderFieldValidator().isValidOrderId(orderId)) {
+        if (!new OrderFieldValidator().isValidOrderId(orderId)) {
             return null;
         }
 
-            List<OrderItem> orderItems = new ArrayList<>();
-            for (OrderResultItem orderResultItem : omaOrder.getCustomerOrderItemList()) {
-                orderItems.add(convertToOrderItem(orderResultItem));
+        List<OrderItem> orderItems = new ArrayList<>();
+        for (OrderResultItem orderResultItem : omaOrder.getCustomerOrderItemList()) {
+            orderItems.add(convertToOrderItem(orderResultItem));
 
         }
         Order.Builder orderBuilder = Order.builder()
-                                         .withOrderId(omaOrder.getOrderId())
-                                         .withCustomerId(omaOrder.getCustomerId())
-                                         .withMarketplaceId(omaOrder.getMarketplaceId())
-                                         .withCondition(omaOrder.getCondition())
-                                         .withCustomerOrderItemList(orderItems)
-                                         .withOrderDate(omaOrder.getOrderDate())
-                                         .withShipOption(omaOrder.getShipOption());
+                .withOrderId(omaOrder.getOrderId())
+                .withCustomerId(omaOrder.getCustomerId())
+                .withMarketplaceId(omaOrder.getMarketplaceId())
+                .withCondition(omaOrder.getCondition())
+                .withCustomerOrderItemList(orderItems)
+                .withOrderDate(omaOrder.getOrderDate())
+                .withShipOption(omaOrder.getShipOption());
 
         return orderBuilder.build();
     }
 
     private OrderItem convertToOrderItem(OrderResultItem orderResultItem) {
         return OrderItem.builder()
-                   .withCustomerOrderItemId(orderResultItem.getCustomerOrderItemId())
-                   .withOrderId(orderResultItem.getOrderId())
-                   .withAsin(orderResultItem.getAsin())
-                   .withMerchantId(orderResultItem.getMerchantId())
-                   .withQuantity(orderResultItem.getQuantity())
-                   .withTitle(orderResultItem.getTitle())
-                   .withIsConfidenceTracked(orderResultItem.isConfidenceTracked())
-                   .withConfidence(orderResultItem.getConfidence())
-                   .build();
+                .withCustomerOrderItemId(orderResultItem.getCustomerOrderItemId())
+                .withOrderId(orderResultItem.getOrderId())
+                .withAsin(orderResultItem.getAsin())
+                .withMerchantId(orderResultItem.getMerchantId())
+                .withQuantity(orderResultItem.getQuantity())
+                .withTitle(orderResultItem.getTitle())
+                .withIsConfidenceTracked(orderResultItem.isConfidenceTracked())
+                .withConfidence(orderResultItem.getConfidence())
+                .build();
     }
 
 }

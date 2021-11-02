@@ -22,7 +22,8 @@ public final class OrderShipmentData {
     private boolean isOfsPromiseActive;
     private boolean doDpsAndOfsPromisesAgree;
 
-    private OrderShipmentData() {}
+    private OrderShipmentData() {
+    }
 
     public String getShipmentId() {
         return shipmentId;
@@ -70,6 +71,7 @@ public final class OrderShipmentData {
 
     /**
      * Indicates if the DPS and OFS promises should be in agreement (true) for this shipment or not (false).
+     *
      * @return true if DPS and OFS should agree on promise; false otherwise
      */
     public boolean doDpsAndOfsPromisesAgree() {
@@ -78,6 +80,7 @@ public final class OrderShipmentData {
 
     /**
      * Indicates if this shipment contains the specified order item.
+     *
      * @param orderItemId the order item ID to determine if this shipment includes or not
      * @return true if this shipment includes orderItemId; false otherwise
      */
@@ -94,23 +97,24 @@ public final class OrderShipmentData {
     @Override
     public String toString() {
         return "OrderShipmentData{"
-               + "shipmentId='" + shipmentId + '\''
-               + ", zip='" + zip + '\''
-               + ", condition='" + condition + '\''
-               + ", warehouseId='" + warehouseId + '\''
-               + ", customerShipmentItems=" + customerShipmentItems
-               + ", shipDate=" + shipDate
-               + ", creationDate=" + creationDate
-               + ", shipmentShipOption='" + shipmentShipOption + '\''
-               + ", deliveryDate=" + deliveryDate
-               + ", isDpsPromiseActive=" + isDpsPromiseActive
-               + ", isOfsPromiseActive=" + isOfsPromiseActive
-               + ", doDpsAndOfsPromisesAgree" + doDpsAndOfsPromisesAgree
-               + '}';
+                + "shipmentId='" + shipmentId + '\''
+                + ", zip='" + zip + '\''
+                + ", condition='" + condition + '\''
+                + ", warehouseId='" + warehouseId + '\''
+                + ", customerShipmentItems=" + customerShipmentItems
+                + ", shipDate=" + shipDate
+                + ", creationDate=" + creationDate
+                + ", shipmentShipOption='" + shipmentShipOption + '\''
+                + ", deliveryDate=" + deliveryDate
+                + ", isDpsPromiseActive=" + isDpsPromiseActive
+                + ", isOfsPromiseActive=" + isOfsPromiseActive
+                + ", doDpsAndOfsPromisesAgree" + doDpsAndOfsPromisesAgree
+                + '}';
     }
 
     /**
      * Returns a builder object suitable for building an OrderShipmentData.
+     *
      * @return Builder, ready to build an OrderShipmentData
      */
     public static Builder builder() {
@@ -201,6 +205,7 @@ public final class OrderShipmentData {
 
         /**
          * Builds and returns an OrderShipmentData from the builder state.
+         *
          * @return newly minted OrderShipmentData
          */
         public OrderShipmentData build() {
@@ -231,8 +236,9 @@ public final class OrderShipmentData {
 
         /**
          * Creates a CustomerShipmentItemData from quantity and order item ID.
+         *
          * @param customerOrderItemId the order item that this shipment item corresponds to
-         * @param quantity number of the item in this shipment
+         * @param quantity            number of the item in this shipment
          */
         public CustomerShipmentItemData(String customerOrderItemId, int quantity) {
             this.customerOrderItemId = customerOrderItemId;
@@ -250,9 +256,9 @@ public final class OrderShipmentData {
         @Override
         public String toString() {
             return "CustomerShipmentItemData{"
-                   + "customerOrderItemId='" + customerOrderItemId + '\''
-                   + ", quantity=" + quantity
-                   + '}';
+                    + "customerOrderItemId='" + customerOrderItemId + '\''
+                    + ", quantity=" + quantity
+                    + '}';
         }
     }
 }

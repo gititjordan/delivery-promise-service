@@ -34,12 +34,12 @@ public class OrderManipulationAuthorityClientTest {
         invalidOrderItemId = "01";
 
         orderResultItem = OrderResultItem.builder()
-                              .withCustomerOrderItemId(orderItemId)
-                              .withOrderId(orderId).build();
+                .withCustomerOrderItemId(orderItemId)
+                .withOrderId(orderId).build();
         orderResult = OrderResult.builder()
-                          .withOrderId(orderId)
-                          .withCustomerOrderItemList(Arrays.asList(orderResultItem))
-                          .build();
+                .withOrderId(orderId)
+                .withCustomerOrderItemList(Arrays.asList(orderResultItem))
+                .build();
 
         when(mockOrderManipulationAuthority.getCustomerOrderByOrderId(orderId)).thenReturn(orderResult);
         when(mockOrderManipulationAuthority.getCustomerOrderItemByOrderItemId(orderItemId)).thenReturn(orderResultItem);

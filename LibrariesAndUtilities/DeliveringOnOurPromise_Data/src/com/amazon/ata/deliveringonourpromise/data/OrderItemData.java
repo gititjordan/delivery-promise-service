@@ -21,10 +21,12 @@ public final class OrderItemData {
     private boolean isConfidenceTracked;
     private int confidence;
 
-    private OrderItemData() {}
+    private OrderItemData() {
+    }
 
     /**
      * Sets the order ID, allowing overwriting to match the requested order ID.
+     *
      * @param orderId The new order ID
      */
     public void setOrderId(String orderId) {
@@ -86,20 +88,21 @@ public final class OrderItemData {
     @Override
     public String toString() {
         return "OrderItemData{"
-               + "customerOrderItemId='" + customerOrderItemId + '\''
-               + ", quantity=" + quantity
-               + ", approvalDate=" + approvalDate
-               + ", orderId='" + orderId + '\''
-               + ", merchantId='" + merchantId + '\''
-               + ", asin='" + asin + '\''
-               + ", supplyCode='" + supplyCode + '\''
-               + ", title='" + title + '\''
-               + ", supplyCodeDate=" + supplyCodeDate
-               + '}';
+                + "customerOrderItemId='" + customerOrderItemId + '\''
+                + ", quantity=" + quantity
+                + ", approvalDate=" + approvalDate
+                + ", orderId='" + orderId + '\''
+                + ", merchantId='" + merchantId + '\''
+                + ", asin='" + asin + '\''
+                + ", supplyCode='" + supplyCode + '\''
+                + ", title='" + title + '\''
+                + ", supplyCodeDate=" + supplyCodeDate
+                + '}';
     }
 
     /**
      * Returns a fresh builder for building OrderItemData.
+     *
      * @return a new Builder
      */
     public static Builder builder() {
@@ -183,6 +186,7 @@ public final class OrderItemData {
 
         /**
          * Builds the OrderItemData from provided fields.
+         *
          * @return populated OrderItemData object
          */
         public OrderItemData build() {

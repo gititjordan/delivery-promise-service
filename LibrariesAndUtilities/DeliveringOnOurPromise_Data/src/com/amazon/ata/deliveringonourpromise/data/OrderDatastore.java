@@ -131,13 +131,13 @@ public final class OrderDatastore {
 
         Map<String, OrderFixture> orderFixtures = getOrderFixtures();
         List<String> headers = Arrays.asList("ORDER ID",
-                                             "# ITEMS",
-                                             "# SHIPMENTS",
-                                             "# SHIPPED",
-                                             "# DELIVERED",
-                                             "DPS & OFS PROMISES AGREE?",
-                                             "PROMISE CONFIDENCE?",
-                                             "DESCRIPTION");
+                "# ITEMS",
+                "# SHIPMENTS",
+                "# SHIPPED",
+                "# DELIVERED",
+                "DPS & OFS PROMISES AGREE?",
+                "PROMISE CONFIDENCE?",
+                "DESCRIPTION");
         List<List<String>> dataRows = new ArrayList<>();
 
         List<String> orderIds = new ArrayList<>(orderFixtures.keySet());
@@ -150,25 +150,25 @@ public final class OrderDatastore {
 
             if (null == orderData) {
                 dataRows.add(Arrays.asList(orderId,
-                                           formatTableNumberEntry(0),
-                                           formatTableNumberEntry(0),
-                                           formatTableNumberEntry(0),
-                                           formatTableNumberEntry(0),
-                                           "",
-                                           "",
-                                           fixture.getDataDescription()
-                             )
+                                formatTableNumberEntry(0),
+                                formatTableNumberEntry(0),
+                                formatTableNumberEntry(0),
+                                formatTableNumberEntry(0),
+                                "",
+                                "",
+                                fixture.getDataDescription()
+                        )
                 );
             } else {
                 dataRows.add(Arrays.asList(orderId,
-                                           formatTableNumberEntry(getNumItemsForOrder(orderData)),
-                                           formatTableNumberEntry(getNumShipmentsForOrder(orderData)),
-                                           formatTableNumberEntry(getNumShippedShipmentsForOrder(orderData)),
-                                           formatTableNumberEntry(getNumDeliveredShipmentsForOrder(orderData)),
-                                           renderPromiseAgreementEntryForOrder(orderData),
-                                           renderPromiseConfidenceEntryForOrder(orderData),
-                                           fixture.getDataDescription()
-                             )
+                                formatTableNumberEntry(getNumItemsForOrder(orderData)),
+                                formatTableNumberEntry(getNumShipmentsForOrder(orderData)),
+                                formatTableNumberEntry(getNumShippedShipmentsForOrder(orderData)),
+                                formatTableNumberEntry(getNumDeliveredShipmentsForOrder(orderData)),
+                                renderPromiseAgreementEntryForOrder(orderData),
+                                renderPromiseConfidenceEntryForOrder(orderData),
+                                fixture.getDataDescription()
+                        )
                 );
             }
         }
@@ -234,14 +234,14 @@ public final class OrderDatastore {
 
         if (idSegments.length != 3) {
             throw new IllegalArgumentException(String.format(
-                "Expected three segments in order ID '%s', but found %d", orderId, idSegments.length
+                    "Expected three segments in order ID '%s', but found %d", orderId, idSegments.length
             ));
         }
 
         String suffix = idSegments[2];
         if (suffix.length() != 7) {
             throw new IllegalArgumentException(String.format(
-                "Expected order ID ('%s') suffix to contain 7 digits, but suffix was '%s' instead", orderId, suffix
+                    "Expected order ID ('%s') suffix to contain 7 digits, but suffix was '%s' instead", orderId, suffix
             ));
         }
 
@@ -279,14 +279,14 @@ public final class OrderDatastore {
      */
     private int getNumShippedShipmentsForOrder(OrderData orderData) {
         return orderData.getCustomerShipments().stream()
-                   .map(s -> {
-                       if (s.getShipDate() == null) {
-                           return 0;
-                       } else {
-                           return 1;
-                       }
-                   })
-                   .reduce(0, Integer::sum);
+                .map(s -> {
+                    if (s.getShipDate() == null) {
+                        return 0;
+                    } else {
+                        return 1;
+                    }
+                })
+                .reduce(0, Integer::sum);
     }
 
     /*
@@ -294,14 +294,14 @@ public final class OrderDatastore {
      */
     private int getNumDeliveredShipmentsForOrder(OrderData orderData) {
         return orderData.getCustomerShipments().stream()
-                   .map(s -> {
-                       if (s.getDeliveryDate() == null) {
-                           return 0;
-                       } else {
-                           return 1;
-                       }
-                   })
-                   .reduce(0, Integer::sum);
+                .map(s -> {
+                    if (s.getDeliveryDate() == null) {
+                        return 0;
+                    } else {
+                        return 1;
+                    }
+                })
+                .reduce(0, Integer::sum);
     }
 
     /*
@@ -370,8 +370,8 @@ public final class OrderDatastore {
 
         String display;
         if ((numPositive > 0 && numNegative > 0)
-            || (numPositive > 0 && numUntracked > 0)
-            || (numNegative > 0 && numUntracked > 0)) {
+                || (numPositive > 0 && numUntracked > 0)
+                || (numNegative > 0 && numUntracked > 0)) {
 
             display = "MIXED";
         } else if (numPositive > 0) {

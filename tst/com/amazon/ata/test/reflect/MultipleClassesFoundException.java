@@ -12,23 +12,24 @@ public class MultipleClassesFoundException extends ClassQueryException {
 
     /**
      * Creates a new {@code MultipleClassesFoundException}.
+     *
      * @param classQuery the {@code ClassQuery} that ran into trouble.
-     * @param classes the multiple classes matching the class query
+     * @param classes    the multiple classes matching the class query
      */
     public MultipleClassesFoundException(final ClassQuery classQuery, final Set<Class<?>> classes) {
         super(
-            classQuery,
-            String.format(
-                "Multiple classes (%s) under package '%s' matching criteria: %s",
-                getClassNames(classes),
-                classQuery.getPackageName(),
-                classQuery.toString())
+                classQuery,
+                String.format(
+                        "Multiple classes (%s) under package '%s' matching criteria: %s",
+                        getClassNames(classes),
+                        classQuery.getPackageName(),
+                        classQuery.toString())
         );
     }
 
     private static String getClassNames(final Set<Class<?>> classes) {
         return classes.stream()
-            .map(Class::getName)
-            .collect(Collectors.joining(", "));
+                .map(Class::getName)
+                .collect(Collectors.joining(", "));
     }
 }

@@ -41,6 +41,6 @@ public class MasteryTaskOneTests {
         assertNull(promiseHistory.getOrder(), "Expected Missed Promise CLI to provide result!");
         List<Promise> promises = promiseHistory.getPromises();
         assertTrue(null != promises && 0 == promises.size(),
-            "Expected Missed Promise CLI to not print promise history!");
+                "Expected Missed Promise CLI to not print promise history!");
     }
 }

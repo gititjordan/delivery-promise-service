@@ -23,7 +23,7 @@ public enum OrderCondition {
     /**
      * Builds an order condition from code and human-readable description.
      *
-     * @param conditionCode numeric code representing the condition
+     * @param conditionCode        numeric code representing the condition
      * @param conditionDescription human-readable description of the condition
      */
     OrderCondition(int conditionCode, String conditionDescription) {
@@ -33,6 +33,7 @@ public enum OrderCondition {
 
     /**
      * Returns the OrderCondition corresponding to the given code.
+     *
      * @param code the numeric code for the OrderCondition to look up
      * @return the OrderCondition corresponding to the given code if valid, null otherwise.
      */
@@ -56,6 +57,7 @@ public enum OrderCondition {
 
     /**
      * return string representation of the order condition.
+     *
      * @return String
      */
     @Override

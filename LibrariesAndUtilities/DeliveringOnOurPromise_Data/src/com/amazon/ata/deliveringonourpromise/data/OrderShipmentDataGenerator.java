@@ -15,7 +15,7 @@ final class OrderShipmentDataGenerator {
 
     // singleton instance
     private static final OrderShipmentDataGenerator ORDER_SHIPMENT_GENERATOR_INSTANCE =
-        new OrderShipmentDataGenerator();
+            new OrderShipmentDataGenerator();
 
     // valid warehouses to select from
     private static final List<String> WAREHOUSES = Arrays.asList("BFI4", "BFI7", "SEA8");
@@ -48,16 +48,16 @@ final class OrderShipmentDataGenerator {
      */
     OrderShipmentData.Builder buildShipmentData() {
         return OrderShipmentData.builder()
-                   .withShipmentId(createShipmentId())
-                   .withZip(createShipmentZip())
-                   .withCondition(createShipmentCondition())
-                   .withWarehouseId(createWarehouseId())
-                   .withShipDate(createShipmentShipDate())
-                   .withCreationDate(createShipmentCreationDate())
-                   .withShipmentShipOption(createShipmentShipOption())
-                   .withDeliveryDate(createShipmentDeliveryDate())
-                   .withDoDpsAndOfsPromisesAgree(doDpsAndOfsPromisesAgree())
-                   .withOnlyDpsPromisePresentAndActive(false);
+                .withShipmentId(createShipmentId())
+                .withZip(createShipmentZip())
+                .withCondition(createShipmentCondition())
+                .withWarehouseId(createWarehouseId())
+                .withShipDate(createShipmentShipDate())
+                .withCreationDate(createShipmentCreationDate())
+                .withShipmentShipOption(createShipmentShipOption())
+                .withDeliveryDate(createShipmentDeliveryDate())
+                .withDoDpsAndOfsPromisesAgree(doDpsAndOfsPromisesAgree())
+                .withOnlyDpsPromisePresentAndActive(false);
     }
 
     /**
@@ -68,11 +68,11 @@ final class OrderShipmentDataGenerator {
      * OrderShipmentData
      */
     OrderShipmentData.CustomerShipmentItemData createShipmentItemDataFromOrderItemData(
-        OrderItemData orderItemData
+            OrderItemData orderItemData
     ) {
         return new OrderShipmentData.CustomerShipmentItemData(
-            orderItemData.getCustomerOrderItemId(),
-            orderItemData.getQuantity());
+                orderItemData.getCustomerOrderItemId(),
+                orderItemData.getQuantity());
     }
 
     // helpers to deterministically return varying SHIPMENT default/sample data

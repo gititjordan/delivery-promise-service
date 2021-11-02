@@ -33,13 +33,13 @@ public class DeliveryPromiseServiceClient {
         }
 
         return Promise.builder()
-                   .withPromiseLatestArrivalDate(deliveryPromise.getPromiseLatestArrivalDate())
-                   .withCustomerOrderItemId(deliveryPromise.getCustomerOrderItemId())
-                   .withPromiseLatestShipDate(deliveryPromise.getPromiseLatestShipDate())
-                   .withPromiseEffectiveDate(deliveryPromise.getPromiseEffectiveDate())
-                   .withIsActive(deliveryPromise.isActive())
-                   .withPromiseProvidedBy(deliveryPromise.getPromiseProvidedBy())
-                   .withAsin(deliveryPromise.getAsin())
-                   .build();
+                .withPromiseLatestArrivalDate(deliveryPromise.getPromiseLatestArrivalDate())
+                .withCustomerOrderItemId(deliveryPromise.getCustomerOrderItemId())
+                .withPromiseLatestShipDate(deliveryPromise.getPromiseLatestShipDate())
+                .withPromiseEffectiveDate(deliveryPromise.getPromiseEffectiveDate())
+                .withIsActive(deliveryPromise.isActive())
+                .withPromiseProvidedBy(deliveryPromise.getPromiseProvidedBy())
+                .withAsin(deliveryPromise.getAsin())
+                .build();
     }
 }

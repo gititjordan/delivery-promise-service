@@ -14,19 +14,19 @@ public class OrderPromiseTest {
     @BeforeEach
     private void setup() {
         orderPromise = OrderPromise.builder()
-                           .withCustomerOrderId("113-4938334-2196208")
-                           .withCustomerOrderItemId("14418401775681")
-                           .withPromiseDataSource("SLAM")
-                           .withPromiseEffectiveDate(ZonedDateTime.now())
-                           .withPromiseLatestArrivalDate(ZonedDateTime.now().plusDays(2))
-                           .withPromiseProvidedBy("OFS")
-                           .withPromiseQuantity(9)
-                           .withAsin("B07C9JYF2W")
-                           .withFulfillmentSvcSubclassId("2")
-                           .withPromiseLatestShipDate(ZonedDateTime.now().plusHours(6))
-                           .withIsActive(true)
-                           .withPlanQualityTypeCode("Normal")
-                           .build();
+                .withCustomerOrderId("113-4938334-2196208")
+                .withCustomerOrderItemId("14418401775681")
+                .withPromiseDataSource("SLAM")
+                .withPromiseEffectiveDate(ZonedDateTime.now())
+                .withPromiseLatestArrivalDate(ZonedDateTime.now().plusDays(2))
+                .withPromiseProvidedBy("OFS")
+                .withPromiseQuantity(9)
+                .withAsin("B07C9JYF2W")
+                .withFulfillmentSvcSubclassId("2")
+                .withPromiseLatestShipDate(ZonedDateTime.now().plusHours(6))
+                .withIsActive(true)
+                .withPlanQualityTypeCode("Normal")
+                .build();
     }
 
     @Test
@@ -58,17 +58,17 @@ public class OrderPromiseTest {
         assertSubstringMatch(orderPromise.getCustomerOrderItemId(), stringifiedOrderPromise);
         assertSubstringMatch(orderPromise.getPromiseDataSource(), stringifiedOrderPromise);
         assertSubstringMatch(orderPromise.getPromiseEffectiveDate()
-                                 .toLocalDateTime().toString(),
-                             stringifiedOrderPromise);
+                        .toLocalDateTime().toString(),
+                stringifiedOrderPromise);
         assertSubstringMatch(orderPromise.getPromiseLatestArrivalDate()
-                                 .toLocalDateTime().toString(),
-                             stringifiedOrderPromise);
+                        .toLocalDateTime().toString(),
+                stringifiedOrderPromise);
         assertSubstringMatch(orderPromise.getPromiseProvidedBy(), stringifiedOrderPromise);
         assertSubstringMatch(String.valueOf(orderPromise.getPromiseQuantity()), stringifiedOrderPromise);
         assertSubstringMatch(orderPromise.getAsin(), stringifiedOrderPromise);
         assertSubstringMatch(orderPromise.getPromiseLatestShipDate()
-                                 .toLocalDateTime().toString(),
-                             stringifiedOrderPromise);
+                        .toLocalDateTime().toString(),
+                stringifiedOrderPromise);
         assertSubstringMatch(String.valueOf(orderPromise.isActive()), stringifiedOrderPromise);
         assertSubstringMatch(orderPromise.getPlanQualityTypeCode(), stringifiedOrderPromise);
     }
@@ -76,10 +76,10 @@ public class OrderPromiseTest {
     private void assertSubstringMatch(String pattern, String result) {
         String matchPattern = new StringBuilder(".*").append(pattern).append(".*").toString();
         assertTrue(Pattern.matches(matchPattern, result),
-                   String.format("Expected to find substring, '%s', in String result '%s' but did not",
-                                 pattern,
-                                 result
-                   )
+                String.format("Expected to find substring, '%s', in String result '%s' but did not",
+                        pattern,
+                        result
+                )
         );
     }
 }
