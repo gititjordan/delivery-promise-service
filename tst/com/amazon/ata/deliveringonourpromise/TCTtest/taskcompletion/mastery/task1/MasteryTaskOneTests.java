@@ -34,6 +34,7 @@ public class MasteryTaskOneTests {
         try {
             promiseHistory = client.getPromiseHistoryByOrderId(nonExistentOrderId);
         } catch (Exception e) {
+            e.printStackTrace();
             fail("Expected Missed Promise CLI to not throw an exception!");
         }
 

@@ -41,7 +41,7 @@ public class Order {
     private String shipOption;
     private ZonedDateTime orderDate;
 
-    private Order() { }
+    Order() { }
 
     /**
      * Returns a new Order.Builder object for constructing an Order.

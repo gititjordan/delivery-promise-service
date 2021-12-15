@@ -1,0 +1,5 @@
+The current design only supports one client returning a promise. Redesign the PromiseDao to support multiple clients, including the OFS client we know about and future clients we can't anticipate right now.
+
+Find the PromiseDaoDesignReview template to your src/resources. Answer each of the questions to help you better grasp how the code should change.
+
+After the updating that document, create a file named mastery-task4.txt in src/resources folder of the project.

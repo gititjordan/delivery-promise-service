@@ -2,6 +2,7 @@ package com.amazon.ata.deliveringonourpromise.dao;
 
 import com.amazon.ata.deliveringonourpromise.App;
 import com.amazon.ata.deliveringonourpromise.deliverypromiseservice.DeliveryPromiseServiceClient;
+import com.amazon.ata.deliveringonourpromise.orderfulfillmentservice.OrderFulfillmentServiceClient;
 import com.amazon.ata.deliveringonourpromise.ordermanipulationauthority.OrderManipulationAuthorityClient;
 import com.amazon.ata.deliveringonourpromise.types.Promise;
 
@@ -19,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PromiseDaoTest {
 
     private PromiseDao dao;
-
+    private OrderFulfillmentServiceClient ofsClient = App.getOrderFulfillmentServiceClient();
     private OrderManipulationAuthorityClient omaClient = App.getOrderManipulationAuthorityClient();
     private DeliveryPromiseServiceClient dpsClient = App.getDeliveryPromiseServiceClient();
 

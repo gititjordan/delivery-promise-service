@@ -31,6 +31,8 @@ public class PromiseHistory {
      * @param newPromise the next promise to add to the history's promises
      */
     public void addPromise(Promise newPromise) {
+
+
         if (null == newPromise) {
             throw new IllegalArgumentException("PromiseHistory cannot accept null Promises");
         }

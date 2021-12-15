@@ -1,5 +1,6 @@
 package com.amazon.ata.deliveringonourpromise.deliverypromiseservice;
 
+import com.amazon.ata.deliveringonourpromise.orderfulfillmentservice.ServiceClient;
 import com.amazon.ata.deliveringonourpromise.types.Promise;
 import com.amazon.ata.deliverypromiseservice.service.DeliveryPromise;
 import com.amazon.ata.deliverypromiseservice.service.DeliveryPromiseService;
@@ -7,7 +8,7 @@ import com.amazon.ata.deliverypromiseservice.service.DeliveryPromiseService;
 /**
  * Client for accessing the DeliveryPromiseService to retrieve Promises.
  */
-public class DeliveryPromiseServiceClient {
+public class DeliveryPromiseServiceClient implements ServiceClient{
     private DeliveryPromiseService dpService;
 
     /**
@@ -18,6 +19,7 @@ public class DeliveryPromiseServiceClient {
     public DeliveryPromiseServiceClient(DeliveryPromiseService dpService) {
         this.dpService = dpService;
     }
+
 
     /**
      * Fetches the Promise for the given order item ID.
@@ -42,4 +44,10 @@ public class DeliveryPromiseServiceClient {
                 .withAsin(deliveryPromise.getAsin())
                 .build();
     }
+    public Promise getOrderPromiseByOrderItemId(String customerOrderItemId) {
+        return getDeliveryPromiseByOrderItemId(customerOrderItemId);
+    }
+
+
+
 }

@@ -1,13 +1,22 @@
 package com.amazon.ata.deliveringonourpromise.dao;
 
+import com.amazon.ata.deliveringonourpromise.App;
 import com.amazon.ata.deliveringonourpromise.deliverypromiseservice.DeliveryPromiseServiceClient;
+import com.amazon.ata.deliveringonourpromise.orderfulfillmentservice.OrderFulfillmentServiceClient;
+import com.amazon.ata.deliveringonourpromise.orderfulfillmentservice.ServiceClient;
 import com.amazon.ata.deliveringonourpromise.ordermanipulationauthority.OrderManipulationAuthorityClient;
+import com.amazon.ata.deliveringonourpromise.types.OrderItem;
 import com.amazon.ata.deliveringonourpromise.types.Promise;
+import com.amazon.ata.deliveringonourpromise.types.PromiseHistory;
 import com.amazon.ata.ordermanipulationauthority.OrderResult;
 import com.amazon.ata.ordermanipulationauthority.OrderResultItem;
+import com.amazon.ata.ordermanipulationauthority.OrderResultItemDetail;
 import com.amazon.ata.ordermanipulationauthority.OrderShipment;
+import com.amazonaws.services.dynamodbv2.xspec.NULL;
 
+import java.security.Provider;
 import java.time.ZonedDateTime;
+import java.time.chrono.ChronoZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +24,9 @@ import java.util.List;
  * DAO implementation for Promises.
  */
 public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
-    private DeliveryPromiseServiceClient dpsClient;
-    private OrderManipulationAuthorityClient omaClient;
+    private OrderManipulationAuthorityClient omaClient = App.getOrderManipulationAuthorityClient();
+    private List<ServiceClient> serviceClients = new ArrayList<>();
+
 
     /**
      * PromiseDao constructor, accepting service clients for DPS and OMA.
@@ -24,10 +34,25 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
      * @param dpsClient DeliveryPromiseServiceClient for DAO to access DPS
      * @param omaClient OrderManipulationAuthorityClient for DAO to access OMA
      */
-    public PromiseDao(DeliveryPromiseServiceClient dpsClient, OrderManipulationAuthorityClient omaClient) {
-        this.dpsClient = dpsClient;
+    public PromiseDao(DeliveryPromiseServiceClient dpsClient,OrderManipulationAuthorityClient omaClient) {
+        this.serviceClients.add(dpsClient);
         this.omaClient = omaClient;
+
     }
+
+    public PromiseDao( List<ServiceClient> serviceClients, OrderFulfillmentServiceClient ofsClient, OrderManipulationAuthorityClient omaClient) {
+        this.serviceClients.add(ofsClient);
+        this.serviceClients.addAll(serviceClients);
+        this.omaClient = omaClient;
+
+    }
+
+    public PromiseDao(DeliveryPromiseServiceClient deliveryPromiseServiceClient,
+                      OrderFulfillmentServiceClient orderFulfillmentServiceClient,
+                      OrderManipulationAuthorityClient orderManipulationAuthorityClient) {
+    }
+
+
 
     /**
      * Returns a list of all Promises associated with the given order item ID.
@@ -37,19 +62,23 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
      */
     @Override
     public List<Promise> get(String customerOrderItemId) {
+
         // Fetch the delivery date, so we can add to any promises that we find
         ZonedDateTime itemDeliveryDate = getDeliveryDateForOrderItem(customerOrderItemId);
 
         List<Promise> promises = new ArrayList<>();
 
+
         // fetch Promise from Delivery Promise Service. If exists, add to list of Promises to return.
         // Set delivery date
-        Promise dpsPromise = dpsClient.getDeliveryPromiseByOrderItemId(customerOrderItemId);
-        if (dpsPromise != null) {
-            dpsPromise.setDeliveryDate(itemDeliveryDate);
-            promises.add(dpsPromise);
-        }
+        for (ServiceClient client : serviceClients) {
+            Promise promise = client.getOrderPromiseByOrderItemId(customerOrderItemId);
 
+            if (promise != null) {
+                promise.setDeliveryDate(itemDeliveryDate);
+                promises.add(promise);
+            }
+        }
         return promises;
     }
 

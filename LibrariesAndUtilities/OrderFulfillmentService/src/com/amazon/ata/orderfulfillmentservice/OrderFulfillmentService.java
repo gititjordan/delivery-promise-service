@@ -6,16 +6,14 @@ import com.amazon.ata.deliveringonourpromise.data.OrderItemData;
 import com.amazon.ata.deliveringonourpromise.data.OrderShipmentData;
 import com.amazon.ata.deliverypromiseservice.service.DeliveryPromise;
 import com.amazon.ata.deliverypromiseservice.service.DeliveryPromiseService;
-
 import java.time.ZonedDateTime;
-
 /**
  * The service providing information on orders that are routing to or have come through order fulfillment.
  * This order information includes customer promises.
  */
 public class OrderFulfillmentService {
-    private OrderDatastore orderDatastore;
-    private DeliveryPromiseService deliveryPromiseService;
+    private OrderDatastore orderDatastore ;
+    private DeliveryPromiseService deliveryPromiseService ;
 
     /**
      * Constructs an OrderFulfillmentService instance, using the provided OrderDatastore.
@@ -26,6 +24,12 @@ public class OrderFulfillmentService {
     public OrderFulfillmentService(OrderDatastore orderDatastore, DeliveryPromiseService deliveryPromiseService) {
         this.orderDatastore = orderDatastore;
         this.deliveryPromiseService = deliveryPromiseService;
+    }
+
+    public OrderFulfillmentService(OrderDatastore orderDatastore) {
+        this.orderDatastore = orderDatastore;
+
+
     }
 
     /**
