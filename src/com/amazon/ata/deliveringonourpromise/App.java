@@ -47,9 +47,8 @@ public class App {
     }
 
     public static PromiseDao getPromiseDao() {
-        return new PromiseDao(getDeliveryPromiseServiceClient(),
-                 getOrderFulfillmentServiceClient(),getOrderManipulationAuthorityClient()
-        );
+        return new PromiseDao(getDeliveryPromiseServiceClient(),getOrderFulfillmentServiceClient(),
+                getOrderManipulationAuthorityClient());
     }
 
 

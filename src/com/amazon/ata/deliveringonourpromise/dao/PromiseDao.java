@@ -40,8 +40,7 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
 
     }
 
-    public PromiseDao( List<ServiceClient> serviceClients, OrderFulfillmentServiceClient ofsClient, OrderManipulationAuthorityClient omaClient) {
-        this.serviceClients.add(ofsClient);
+    public PromiseDao( List<ServiceClient> serviceClients, OrderManipulationAuthorityClient omaClient) {
         this.serviceClients.addAll(serviceClients);
         this.omaClient = omaClient;
 
@@ -54,6 +53,7 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
 
 
 
+
     /**
      * Returns a list of all Promises associated with the given order item ID.
      *
@@ -63,11 +63,11 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
     @Override
     public List<Promise> get(String customerOrderItemId) {
 
+
         // Fetch the delivery date, so we can add to any promises that we find
         ZonedDateTime itemDeliveryDate = getDeliveryDateForOrderItem(customerOrderItemId);
 
         List<Promise> promises = new ArrayList<>();
-
 
         // fetch Promise from Delivery Promise Service. If exists, add to list of Promises to return.
         // Set delivery date
