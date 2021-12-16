@@ -25,7 +25,8 @@ import java.util.List;
  */
 public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
     private OrderManipulationAuthorityClient omaClient = App.getOrderManipulationAuthorityClient();
-    private List<ServiceClient> serviceClients = new ArrayList<>();
+    private List<ServiceClient> serviceClientsList = new ArrayList<>() ;
+
 
 
     /**
@@ -35,16 +36,17 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
      * @param omaClient OrderManipulationAuthorityClient for DAO to access OMA
      */
     public PromiseDao(DeliveryPromiseServiceClient dpsClient,OrderManipulationAuthorityClient omaClient) {
-        this.serviceClients.add(dpsClient);
+        this.serviceClientsList.add(dpsClient);
         this.omaClient = omaClient;
 
     }
 
-    public PromiseDao( List<ServiceClient> serviceClients, OrderManipulationAuthorityClient omaClient) {
-        this.serviceClients.addAll(serviceClients);
+    public PromiseDao( List<ServiceClient> serviceClientsList, OrderManipulationAuthorityClient omaClient) {
+        this.serviceClientsList.addAll(serviceClientsList);
         this.omaClient = omaClient;
 
     }
+
 
     public PromiseDao(DeliveryPromiseServiceClient deliveryPromiseServiceClient,
                       OrderFulfillmentServiceClient orderFulfillmentServiceClient,
@@ -71,7 +73,7 @@ public class PromiseDao implements ReadOnlyDao<String, List<Promise>> {
 
         // fetch Promise from Delivery Promise Service. If exists, add to list of Promises to return.
         // Set delivery date
-        for (ServiceClient client : serviceClients) {
+        for (ServiceClient client : serviceClientsList) {
             Promise promise = client.getOrderPromiseByOrderItemId(customerOrderItemId);
 
             if (promise != null) {

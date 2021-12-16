@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PromiseDaoTest {
 
     private PromiseDao dao;
-    private OrderFulfillmentServiceClient ofsClient = App.getOrderFulfillmentServiceClient();
     private OrderManipulationAuthorityClient omaClient = App.getOrderManipulationAuthorityClient();
     private DeliveryPromiseServiceClient dpsClient = App.getDeliveryPromiseServiceClient();
 

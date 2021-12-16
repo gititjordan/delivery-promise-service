@@ -15,6 +15,7 @@ public class OrderFulfillmentService {
     private OrderDatastore orderDatastore ;
     private DeliveryPromiseService deliveryPromiseService ;
 
+
     /**
      * Constructs an OrderFulfillmentService instance, using the provided OrderDatastore.
      *
@@ -26,11 +27,6 @@ public class OrderFulfillmentService {
         this.deliveryPromiseService = deliveryPromiseService;
     }
 
-    public OrderFulfillmentService(OrderDatastore orderDatastore) {
-        this.orderDatastore = orderDatastore;
-
-
-    }
 
     /**
      * Returns the OrderPromise for the given order item, if any such promise exists.

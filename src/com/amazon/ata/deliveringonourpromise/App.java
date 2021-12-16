@@ -14,6 +14,9 @@ import com.amazon.ata.deliverypromiseservice.service.DeliveryPromiseService;
 import com.amazon.ata.orderfulfillmentservice.OrderFulfillmentService;
 import com.amazon.ata.ordermanipulationauthority.OrderManipulationAuthority;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.amazon.ata.deliveringonourpromise.data.OrderDatastore.getDatastore;
 
 /**
@@ -47,10 +50,9 @@ public class App {
     }
 
     public static PromiseDao getPromiseDao() {
-        return new PromiseDao(getDeliveryPromiseServiceClient(),
+        return new PromiseDao(getServiceClient(),
                 getOrderManipulationAuthorityClient());
     }
-
 
     // service clients
     public static OrderManipulationAuthorityClient getOrderManipulationAuthorityClient() {
@@ -65,6 +67,13 @@ public class App {
     public static OrderFulfillmentServiceClient getOrderFulfillmentServiceClient() {
         return new OrderFulfillmentServiceClient(getOrderFulfillmentService());
     }
+    public static List<ServiceClient> getServiceClient() {
+    List<ServiceClient> serviceClientList = new ArrayList<>();
+        serviceClientList.add(getDeliveryPromiseServiceClient());
+        serviceClientList.add(getOrderFulfillmentServiceClient());
+            return serviceClientList;
+}
+
 
     // dependency services
     public static OrderManipulationAuthority getOrderManipulationAuthority() {
@@ -76,7 +85,7 @@ public class App {
     }
     //ofs dependency
     public static OrderFulfillmentService getOrderFulfillmentService() {
-        return new OrderFulfillmentService(getOrderDatastore());
+        return new OrderFulfillmentService(getOrderDatastore(), getDeliveryPromiseService());
     }
 
     // sample data
